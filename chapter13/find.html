@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Using .find()</title>
+<link href="../_css/site.css" rel="stylesheet">
+<style>
+#gallery img {
+	display: inline-block;
+	margin: 10px;
+	position: relative;	
+}
+</style>
+<script src="../_js/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('#gallery').click(function() {
+	  $(this).find('img').fadeTo(500,.3).fadeTo(250,1);
+	  //$(this).find('img').animate({left:'-=20px'},200).animate({left:'+=20px'},250); // animate example
+  }); // end click
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<div class="header">
+		<p class="logo">JavaScript <i>&</i> jQuery <i class="mm">The<br>Missing<br>Manual</i></p>
+	</div>
+	<div class="content">
+	  <div class="main">
+	    <h1>Using .find()</h1>
+            <div id="gallery"><a href="#"><img src="images/zoom_out.png" width="80" height="80" alt="zoom"></a> <a href="#"><img src="images/vacancy.png" width="80" height="80" alt="vacnacy"></a><a href="#"><img src="images/user.png" width="80" height="80" alt="user"></a><a href="#"><img src="images/upload.png" width="80" height="80" alt="upload"></a><a href="#"><img src="images/undo.png" width="80" height="80" alt="undo"></a><a href="#"><img src="images/support.png" width="80" height="80" alt="support"></a><a href="#"><img src="images/stop_sign.png" width="80" height="80" alt="stop"></a><a href="#"><img src="images/smiley.png" width="80" height="80" alt="smiley"></a><a href="#"><img src="images/newsletter.png" width="80" height="80" alt="newsletter"></a><a href="#"><img src="images/lock.png" width="80" height="80" alt="lock"></a><a href="#"><img src="images/group.png" width="80" height="80" alt="group"></a><a href="#"><img src="images/export.png" width="80" height="80" alt="export"></a><a href="#"><img src="images/email.png" width="80" height="80" alt="email"></a><a href="#"><img src="images/digital_camera.png" width="80" height="80" alt="camera"></a><a href="#"><img src="images/configuration.png" width="80" height="80" alt="config"></a><a href="#"><img src="images/bar_chart.png" width="80" height="80" alt="bar chart"></a><a href="#"><img src="images/attachment.png" width="80" height="80" alt="attachement"></a><a href="#"><img src="images/addressbook.png" width="80" height="80" alt="addressbook"></a></div>
+	  </div>
+  </div>
+	<div class="footer">
+		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Using .prevAll() and .nextAll()</title>
+<link href="../_css/site.css" rel="stylesheet">
+<style>
+.button {
+	width: 40px;
+	height: 40px;
+	background-color: white;
+	float: left;	
+	margin-right: 20px;
+}
+</style>
+<script src="../_js/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('.button').mouseover(function() {
+	  var $this=$(this)
+	  $this.siblings('.button').css('backgroundColor','white');
+	  $this.prevAll('.button').stop(true,true).fadeTo(250,.5);
+	  $this.nextAll('.button').stop(true,true).fadeTo(250,1);
+	  $this.css({
+		  'backgroundColor':'red',
+		  'opacity' : 1
+	  });
+  }); // end mouseOver
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<div class="header">
+		<p class="logo">JavaScript <i>&</i> jQuery <i class="mm">The<br>Missing<br>Manual</i></p>
+	</div>
+	<div class="content">
+	  <div class="main">
+	    <h1>Using .prevAll and .nextAll()</h1>
+        <p>Click one of the boxes below</p>
+           <div class="button"></div>
+           <div class="button"></div>
+           <div class="button"></div>
+           <div class="button"></div>
+           <div class="button"></div>
+           <div class="button"></div>
+           <div class="button"></div>
+           <div class="button"></div>
+           <div class="button"></div>
+           <div class="button"></div>
+           <div class="button"></div>
+           
+	  </div>
+  </div>
+	<div class="footer">
+		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+	</div>
+</div>
+</body>
+</html>

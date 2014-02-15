@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>News Headlines</title>
+<link href="../_css/site.css" rel="stylesheet">
+<style>
+#newslinks li {
+	display: inline-block;
+	margin-right: 20px;
+}
+#newslinks li a {
+	padding: 5px 10px; 
+	background-color: white;
+	color: black !important;
+	text-decoration: none;	
+}
+#newslinks li a:hover {
+	background-color: rgb(110,138,195);
+	color: white !important;	
+}
+#headlines #newsItem {
+	margin-top: 10px;
+	padding: 20px;
+	border: 1px solid white;	
+}
+</style>
+<script src="../_js/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('#newslinks a').click(function() {
+     var url=$(this).attr('href');
+     $('#headlines').load(url + ' #newsItem');
+     return false;
+  }); //end click
+			
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<div class="header">
+		<p class="logo">JavaScript <i>&</i> jQuery <i class="mm">The<br>Missing<br>Manual</i></p>
+	</div>
+	<div class="content">
+		<div class="main">
+			<h1>News Headlines</h1>
+			<ul id="newslinks">
+			<li><a href="today.html">Today&#8217;s News</a></li>
+    <li><a href="yesterday.html">Yesterday&#8217;s News</a></li>
+    <li><a href="lastweek.html">Last Week&#8217;s News</a></li>
+			</ul>
+			<div id="headlines"></div>
+		</div>
+	</div>
+	<div class="footer">
+		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+	</div>
+</div>
+</body>
+</html>

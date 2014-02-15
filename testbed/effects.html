@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript &amp; jQuery:The Missing Manual</title>
+<link href="../_css/site.css" rel="stylesheet">
+<style>
+#textHolder, #photoHolder {
+	padding: 10px;
+	border: 1px solid #666;
+	margin-bottom: 15px;
+	margin-top: 15px;
+}
+.idLabel {
+	position: absolute;
+	top: 10px;
+	font-weight: bold;
+	color: #FFF;
+	background: #F00;
+	display: inline;
+	left: 10px;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+#photo .idLabel {
+	left: 180px;
+}
+.col1, .col2, .col3 {
+	float: left;
+	width: 32%;
+	padding-bottom: 15px;
+}
+#photo, #text {
+	clear: left;
+	position: relative;
+}
+.col1, .col2 {
+	margin-right: 5px;
+}
+#photo {
+	text-align: center;
+}
+body {
+	-moz-opacity:.999;
+	overflow: scroll;
+}
+#main p.effect {
+	font: bold 14px/1.5 "Courier New", Courier, monospace;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.effect {
+	cursor:pointer;
+}
+.col1 p, .col2 p, .col3 p {
+	width: 180px;
+	background-color: white;
+	padding: 5px 10px;
+	color: black;
+	text-align:center;
+}
+.col1 p:hover, .col2 p:hover, .col3 p:hover {
+	color: #FFF;
+	background-color: #5E82CB;
+}
+input {
+	font-size: 12px;
+	position: absolute;
+	background-color: #FFC;
+	width: 20px;
+}
+</style>
+<script src="../_js/jquery.min.js"></script>
+<script src="../_js/site.js"></script><script src="../_js/jquery-ui-1.8.13.min.js"></script>
+<script>
+$(document).ready(function() {
+   $('.effect').click(function(evt) {
+		 var container = $(this).parents('#textHolder');
+		 var targetID = (container.length==1) ? '#text' : '#photo';
+		 var target = $(targetID);
+		 var action = $(this).attr('title');
+		 switch (action) {
+			case 'hide' :
+			   target.hide();
+				 break;
+		  case 'show' :
+				target.show();
+				break;
+			case 'toggle' :
+				target.toggle();
+				break;
+			case 'fadeIn' :
+				target.fadeIn();
+				break;
+			case 'fadeOut' :
+				target.fadeOut();
+				break;
+			case 'slideDown' :
+				target.slideDown();
+				break;
+			case 'slideUp' :
+				target.slideUp();
+				break;
+			case 'slideToggle' :
+				target.slideToggle();
+				break;
+			case 'fadeTo':
+				varFadeValue = (targetID=='#text') ? $('#textFade').val() :  $('#photoFade').val();
+				target.fadeTo('slow',varFadeValue);
+				break;
+		 }
+		 setButtonState(targetID);
+	});
+	
+	function setButtonState(targID) {
+		  if ($('#photo').is(':animated') || $('#text').is(':animated')) {
+				setTimeout(
+						function() {
+								setButtonState(targID)
+						}, 
+						500);
+			}
+			var vis = $(targID).is(':visible');
+			$('.effect:contains('+targID+')').each(function() {
+					if (vis) {
+						if ($(this).hasClass('vis')) {
+							$(this).fadeTo('normal',1);
+						}
+						if ($(this).hasClass('hid')) {
+							$(this).fadeTo('normal',.25);
+						}
+					} else {
+						if ($(this).hasClass('hid')) {
+							$(this).fadeTo('normal',1);
+						}
+						if ($(this).hasClass('vis')) {
+							$(this).fadeTo('normal',.25);
+						}
+					}
+			});
+	}
+	
+
+	
+	setButtonState('#text');
+	setButtonState('#photo');
+	
+}); // end ready
+</script>
+</head>
+
+<body>
+<div class="wrapper">
+  <div class="header">
+	<p class="logo"><span class="js">JavaScript</span> <span class="amp">&amp;</span> <span class="jq">jQuery </span> <span class="mm">The<br>Missing<br>Manual</span></p>
+</div>
+  <div class="content">
+    <div class="main">
+      <h1>jQuery Effects </h1>
+      <div id="textHolder" class="clear">
+        <div class="col1">
+          <p class="effect hid" title="show">&nbsp;&nbsp;show('#text')</p>
+          <p class="effect vis" title="hide">&nbsp;&nbsp;hide('#text')</p>
+          <p class="effect" title="toggle">toggle('#text')</p>
+        </div>
+        <div class="col2">
+          <p class="effect hid" title="fadeIn">&nbsp;fadeIn('#text')</p>
+          <p class="effect vis" title="fadeOut">fadeOut('#text')</p>
+          <p class="effect" title="fadeTo">&nbsp;fadeTo('#text')
+            <input name="textFade" type="text" id="textFade" value=".5" size="3" maxlength="4">
+          </p>
+        </div>
+        <div class="col3">
+          <p class="effect hid" title="slideDown">&nbsp;&nbsp;slideDown('#text')</p>
+          <p class="effect vis" title="slideUp">&nbsp;&nbsp;&nbsp;&nbsp;slideUp('#text')</p>
+          <p class="effect" title="slideToggle">slideToggle('#text')</p>
+        </div>
+        <div id="text">
+          <p class="idLabel">#text</p>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus rutrum elit ac massa. Proin sit amet dui et dui venenatis aliquam. Vestibulum et metus sed elit convallis convallis. Quisque sem. Curabitur mauris libero, nonummy non, commodo id, pretium quis, justo. Sed convallis eros et odio. Maecenas blandit. Sed at libero sit amet mauris congue pellentesque.</p>
+        </div>
+      </div>
+      <div id="photoHolder" class="clear">
+        <div class="col1">
+          <p class="effect hid" title="show">&nbsp;&nbsp;show('#photo')</p>
+          <p class="effect vis" title="hide">&nbsp;&nbsp;hide('#photo')</p>
+          <p class="effect" title="toggle">toggle('#photo')</p>
+        </div>
+        <div class="col2">
+          <p class="effect hid" title="fadeIn">&nbsp;fadeIn('#photo')</p>
+          <p class="effect vis" title="fadeOut">fadeOut('#photo')</p>
+          <p class="effect" title="fadeTo">&nbsp;fadeTo('#photo')
+            <input name="photoFade" type="text" id="photoFade" value=".5" size="3" maxlength="4">
+          </p>
+        </div>
+        <div class="col3">
+          <p class="effect hid" title="slideDown">&nbsp;&nbsp;slideDown('#photo')</p>
+          <p class="effect vis" title="slideUp">&nbsp;&nbsp;&nbsp;&nbsp;slideUp('#photo')</p>
+          <p class="effect" title="slideToggle">slideToggle('#photo')</p>
+        </div>
+        <div id="photo">
+          <p class="idLabel">#photo</p>
+          <img src="../_images/large/orange.jpg" width="400" height="300" alt="Orange"></div>
+      </div>
+    </div>
+  </div>
+  <footer>
+<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+</footer>
+  <div id="resources">
+    <p class="open">+</p>
+    <h2>Test Beds</h2>
+    <ul class="nav">
+      <li><a href="selectors.html">jQuery Selectors Testbed</a></li>
+      <li><a href="content_functions.html">jQuery Content Functions Test Bed</a></li>
+      <li><a href="events.html">Events Test Bed</a></li>
+      <li><a href="effects.html">jQuery Effects Test Bed</a></li>
+      <li><a href="array_methods.html">Array Methods</a></li>
+      <li><a href="regex_tester.html">Regular Expression Tester</a></li>
+    </ul>
+    <h2>jQuery Resources</h2>
+    <ul class="nav">
+      <li><a href="http://jquery.com">jQuery</a></li>
+      <li><a href="http://jqueryui.com/">jQuery UI</a></li>
+      <li><a href="http://jquerymobile.com/">jQuery Mobile</a></li>
+      <li><a href="http://jqapi.com/">jQAPI.com</a></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

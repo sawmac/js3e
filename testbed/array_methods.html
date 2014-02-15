@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript &amp; jQuery:The Missing Manual</title>
+<link href="../_css/site.css" rel="stylesheet">
+<script src="../_js/jquery.min.js"></script>
+<script src="../_js/site.js"></script><script>
+$(document).ready(function( ) {
+function results(type,code,expl) {
+	if (type=="reset") {
+		$('.results div').not('#start').hide();
+		items = ['shoes', 'socks', 'belt', 'hat'];	
+	} else {
+		$('.results div').show();
+	}
+	
+	if (items[0]!=undefined) {
+		$('#start code').html(items.toString());
+	} else {
+		$('#start code').html('<strong>empty array</strong>');
+	}
+		$('#code code').html(code);
+		var originalItems = items.toString();
+		var returnVal = eval(code);
+	if (items[0]!=undefined) {
+		if (originalItems==items.toString()) {
+		$('#finish code').html('<strong>Array unchanged</strong>');
+		} else {
+		$('#finish code').html(items.toString());
+		}
+	} else {
+		$('#finish code').html('<strong>empty array</strong>');
+	}
+		if (returnVal) {
+		$('#return code').html(returnVal.toString());
+		} else {
+		$('#return code').html('nothing returned');
+		}
+		
+		$('#explanation code').html(expl);
+	}
+	
+	
+	$('.results div').not('#start').hide();
+	$('.example').click(function() {
+			var $this = $(this);
+			var resetA = $this.hasClass('reset');
+			var code = resetA ? "var items = ['shoes', 'socks', 'belt', 'hat'];" : $this.text();
+			var expl = $this.attr('title') || 'none';
+			var type = resetA ? 'reset' : 'update';
+			results(type,code,expl);
+	});
+	
+	results('reset',"var items = ['shoes', 'socks', 'belt', 'hat'];",false);
+	
+	
+});
+
+
+</script>
+</head>
+
+<body>
+<div class="wrapper">
+  <header>
+    JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+  </header>
+  <div class="content">
+    <div class="main">
+      <div id="main">
+        <h1>Array Test Bed</h1>
+        <div class="results">
+          <h2>Results</h2>
+          <div id="start"><strong>items[] contents at start:</strong> <code>&nbsp;</code></div>
+          <div id="code"><strong>JavaScript code:</strong> <code>&nbsp;</code></div>
+          <div id="finish"><strong>items[] contents after JavaScript:</strong> <code>&nbsp;</code></div>
+          <div id="return"><strong>Returned value: </strong><code>&nbsp;</code></div>
+          <div id="explanation"><strong>Explanation:</strong><code class="explanation">&nbsp;blah</code></div>
+          <div id="reset">
+            <p class="example reset">Reset array</p>
+          </div>
+        </div>
+        
+        <!--<h2>Original Array</h2>
+		<p class="example" title="Initializes array with 4 items">items = ['shoes', 'socks', 'belt', 'hat'];</p>-->
+        <div class="unit">
+          <h2>Splice</h2>
+          <p class="example" title="removes 3rd item, and inserts two new items">items.splice(2,1,'coat','scarf');</p>
+          <h2>Push</h2>
+          <p class="example" title="adds two items to end of array and returns total number of items in array">items.push('umbrella','shirt');</p>
+          <h2>Unshift</h2>
+          <p class="example" title="adds two items to beginning of array and returns total number of items in array">items.unshift('tie','pants');</p>
+          <h2>Shift</h2>
+          <p class="example" title="removes 1 item from the beginning of the array">items.shift();</p>
+        </div>
+        <div class="unit">
+          <h2>Pop</h2>
+          <p class="example" title="removes 1 item from end of array">items.pop();</p>
+          <h2>Slice</h2>
+          <p class="example" title="creates a new array made up of a 'slice' of the original array. The first number is the starting index, the second number is the ending index">items.slice(1,2);</p>
+          <h2>Reverse</h2>
+          <p class="example" title="reverses the order of the items in the array">items.reverse();</p>
+          <h2>Join</h2>
+          <p class="example" title="creates a string by combining the value of each array item. The string given to the join() command is used as the seperator">items.join(':');</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+</footer>
+  <div id="resources">
+    <p class="open">+</p>
+    <h2>Test Beds</h2>
+    <ul class="nav">
+      <li><a href="selectors.html">jQuery Selectors Testbed</a></li>
+      <li><a href="content_functions.html">jQuery Content Functions Test Bed</a></li>
+      <li><a href="events.html">Events Test Bed</a></li>
+      <li><a href="effects.html">jQuery Effects Test Bed</a></li>
+      <li><a href="array_methods.html">Array Methods</a></li>
+      <li><a href="regex_tester.html">Regular Expression Tester</a></li>
+    </ul>
+    <h2>jQuery Resources</h2>
+    <ul class="nav">
+      <li><a href="http://jquery.com">jQuery</a></li>
+      <li><a href="http://jqueryui.com/">jQuery UI</a></li>
+      <li><a href="http://jquerymobile.com/">jQuery Mobile</a></li>
+      <li><a href="http://jqapi.com/">jQAPI.com</a></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

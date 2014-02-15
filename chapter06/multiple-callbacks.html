@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Using Multiple Callbacks</title>
+<link href="../_css/site.css" rel="stylesheet">
+<style>
+#figure {
+  position: relative;
+  width: 400px;
+  margin: 0 auto;
+  height: 300px;
+  overflow: hidden;
+}
+
+#photo {
+	position: absolute;	
+	left: -400px;
+}
+
+#caption {
+	position: absolute;
+	width: 	340px;
+	background-color: black;
+	bottom: 10px;
+	left: 24px;
+	padding: 5px;
+	border: 1px solid white;
+	display: none;
+}
+</style>
+<script src="../_js/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+$('#photo').animate(
+   {
+      left: '+=400px',
+   },
+   1000, 
+   function() { // first callback function
+      $('#caption').fadeIn(1000, 
+       function() { // second callback function
+          $('#photo, #caption').fadeOut(1000);
+       } // end second callback
+    ); // end fadeIn
+   } // end first callback function
+); // end animate
+});
+</script>
+</head>
+<body>
+<div class="wrapper">
+<div class="header">
+	<p class="logo">JavaScript <i>&</i> jQuery <i class="mm">The<br>Missing<br>Manual</i></p>
+</div>
+<div class="content">
+	<div class="main">
+<h1>Using Multiple Callbacks  with animate()</h1>
+<div id="figure"><img src="../_images/pencils.jpg" width="400" height="300" alt="pencils" id="photo">
+<p id="caption">Pencils!!!!!!</p></div>
+	</div>
+</div>
+<div class="footer">
+<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+</div>
+</div>
+</body>
+</html>

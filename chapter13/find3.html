@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Using .siblings()</title>
+<link href="../_css/site.css" rel="stylesheet">
+<style>
+#gallery img {
+	display: inline-block;
+	margin: 10px;
+	position: relative;	
+}
+</style>
+<script src="../_js/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('#gallery img').click(function() {
+	 $(this).siblings('img').fadeTo(500,.3)
+	                        .fadeTo(250,1)
+							.animate({left:'-=20px'},200)
+							.animate({left:'+=20px'},250); 
+  }); // end click
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<div class="header">
+		<p class="logo">JavaScript <i>&</i> jQuery <i class="mm">The<br>Missing<br>Manual</i></p>
+	</div>
+	<div class="content">
+	  <div class="main">
+	    <h1>Traversing the DOM</h1>
+            <div id="gallery"><img src="images/zoom_out.png" width="80" height="80" alt="zoom"> <img src="images/vacancy.png" width="80" height="80" alt="vacnacy"><img src="images/user.png" width="80" height="80" alt="user"><img src="images/upload.png" width="80" height="80" alt="upload"></div>
+	  </div>
+  </div>
+	<div class="footer">
+		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+	</div>
+</div>
+</body>
+</html>

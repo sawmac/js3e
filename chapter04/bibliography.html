@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Using Functions</title>
+<link href="../_css/site.css" rel="stylesheet">
+<script src="../_js/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+var biblioText='';
+$('.main a[href^="http://"]').each(function() {
+  var siteText = $(this).text();
+  var extLink = $(this).attr('href');
+  biblioText += '<li><strong>' + siteText + ":</strong> " + extLink + '</li>\n';
+}); // end each
+
+if (biblioText) {
+  bibHTML = '<div id="bib"><p>Websites referenced in this document:</p></div>';
+  $(bibHTML).append(biblioText).appendTo($('.main'));
+}
+
+}); // end ready
+</script>
+</head>
+
+<body>
+<div class="wrapper">
+<div class="header">
+	<p class="logo">JavaScript <i>&</i> jQuery <i class="mm">The<br>Missing<br>Manual</i></p>
+</div>
+<div class="content">
+	<div class="main">
+<h1>A Dynamically Created Bibliography</h1>
+  <p>Throughout history, there have been many fantastic Web sites. <a href="http://www.yahoo.com/">Yahoo!</a> comes to mind, as does <a href="http://www.google.com/">Google</a>. And few will forget the culture-shaping influence of <a href="http://www.hampsterdance.com/">Hampster Dance</a>.</p>
+</div>
+<div class="footer">
+<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+</div>
+</div>
+</body>
+</html>

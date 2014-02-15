@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript &amp; jQuery:The Missing Manual</title>
+<link href="../_css/site.css" rel="stylesheet">
+<script src="../_js/jquery.min.js"></script>
+<script src="../_js/site.js"></script><script>
+$(document).ready(function( ) {
+	$('.example').each(function() {
+		$this = $(this); // reference to the p tag
+		$this.click(function() {
+			var oldHTML=$('#messageBox #changeContainer').html();
+			oldHTML = oldHTML.replace(/></g,'> <');
+			$('#before').text(oldHTML);
+			text = $('#content').val();
+			var codeElem = $(this).find('code');
+			var code = codeElem.text();
+			code = code.replace(/\(\)/,"('" + text + "')");
+			$('#jquery').text(code);
+			eval(code);
+			var newHTML=$('#messageBox #changeContainer').html();
+			newHTML = newHTML.replace(/></g,'> <');
+			$('#after').text(newHTML);
+			console.log($('#message').length);
+			if ($('#message').length<1){
+				if ($('#reload').length<1) {
+					var reloadHTML='<p class="example" id="reload">The message box is gone! You used either the .replaceWith() of .remove() function. Click here to re-create the message box.';
+				$('#messageBox').append(reloadHTML);
+				$('#reload').click(function() {
+					resetBox();
+					$(this).remove();
+				}); 
+				}
+			}
+		});
+	});
+	
+	function resetBox() {
+		console.log('here');
+	    var boxHTML = '<div id="message"><p>New content will go here</p></div>';
+		$('#changeContainer').html(boxHTML);
+	}
+	
+});
+</script>
+<style>
+.results div code {
+	float: none;
+	margin-bottom: 25px;
+	display: block;
+	width: 100%;
+}
+#messageBox {
+	float: right;
+	padding: 10px;
+	border: 1px solid #0A3737;
+	margin-top: 15px;
+	width: 95%;
+}
+#messageBox code {
+	font-size: 15px;
+}
+#message {
+	font-size: 16px;
+	border: 1px solid red;
+	padding: 5px;
+}
+#message p {
+	font-size: 16px;
+}
+.codeRun {
+	font-weight: bold !important;
+	color: red;
+}
+</style>
+</head>
+
+<body>
+<div class="wrapper">
+  <div class="header">
+	<p class="logo"><span class="js">JavaScript</span> <span class="amp">&amp;</span> <span class="jq">jQuery </span> <span class="mm">The<br>Missing<br>Manual</span></p>
+</div>
+  <div class="content">
+    <div class="main">
+      <h1>jQuery Content Function Tester</h1>
+      <div class="results resultSection">
+        <div id="messageBox">
+          <div id="changeContainer">
+            <div id="message">
+              <p>New content will go here</p>
+            </div>
+          </div>
+          <h2>HTML Before:</h2>
+          <code id="before">&lt;div id=&quot;message&quot;&gt;&lt;p&gt;New content will go here&lt;/p&gt;&lt;/div&gt;</code>
+          <h2>HTML After:</h2>
+          <code id="after"></code> </div>
+      </div>
+      <form name="form1" method="post" action="">
+        <h2>Replacement Content</h2>
+        <p>
+          <textarea name="content" cols="30" rows="4" id="content"></textarea>
+        </p>
+      </form>
+      <h2>.text()</h2>
+      <p class="example"><code>$('#message').text();</code> </p>
+      <h2>.html()</h2>
+      <p class="example"><code>$('#message').html();</code> </p>
+      <h2>.append()</h2>
+      <p class="example"><code>$('#message').append();</code> </p>
+      <h2>.prepend()</h2>
+      <p class="example"><code>$('#message').prepend();</code> </p>
+      <h2>.after()</h2>
+      <p class="example"><code>$('#message').after();</code> </p>
+      <h2>.before()</h2>
+      <p class="example"><code>$('#message').before();</code> </p>
+      <h2>.replaceWith()</h2>
+      <p class="example"><code>$('#message').replaceWith();</code> </p>
+      <h2>.remove()</h2>
+      <p class="example"><code>$('#message').remove();</code> </p>
+      <h2>.empty()</h2>
+      <p class="example"><code>$('#message').empty();</code> </p>
+    </div>
+  </div>
+  <footer>
+<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+</footer>
+  <div id="resources">
+    <p class="open">+</p>
+    <h2>Test Beds</h2>
+    <ul class="nav">
+      <li><a href="selectors.html">jQuery Selectors Testbed</a></li>
+      <li><a href="content_functions.html">jQuery Content Functions Test Bed</a></li>
+      <li><a href="events.html">Events Test Bed</a></li>
+      <li><a href="effects.html">jQuery Effects Test Bed</a></li>
+      <li><a href="array_methods.html">Array Methods</a></li>
+      <li><a href="regex_tester.html">Regular Expression Tester</a></li>
+    </ul>
+    <h2>jQuery Resources</h2>
+    <ul class="nav">
+      <li><a href="http://jquery.com">jQuery</a></li>
+      <li><a href="http://jqueryui.com/">jQuery UI</a></li>
+      <li><a href="http://jquerymobile.com/">jQuery Mobile</a></li>
+      <li><a href="http://jqapi.com/">jQAPI.com</a></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

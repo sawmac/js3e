@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Using .wrap()</title>
+<link href="../_css/site.css" rel="stylesheet">
+<style>
+#gallery img {
+	display: inline-block;
+	margin: 10px;
+	position: relative;	
+}
+
+#gallery .figure {
+	float: left;
+	border: 1px solid white;
+	margin-right: 10px;
+	text-align: center;	
+}
+</style>
+<script src="../_js/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+  // loop through the list of images
+$('img').each(function() {
+   // save reference to current image
+   var $this = $(this); 
+   // get the alt property for the caption
+   var caption = $this.attr('alt'); 
+   // add the HTML
+   $this.wrap('<div class="figure"></div>').after('<p>' + caption + '</p>');
+}); // end each
+
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<div class="header">
+		<p class="logo">JavaScript <i>&</i> jQuery <i class="mm">The<br>Missing<br>Manual</i></p>
+	</div>
+	<div class="content">
+	  <div class="main">
+	    <h1>Using .wrap()</h1>
+            <div id="gallery"><img src="images/zoom_out.png" width="80" height="80" alt="zoom"> <img src="images/vacancy.png" width="80" height="80" alt="vacnacy"><img src="images/user.png" width="80" height="80" alt="user"><img src="images/upload.png" width="80" height="80" alt="upload"><img src="images/undo.png" width="80" height="80" alt="undo"><img src="images/support.png" width="80" height="80" alt="support"></div>
+	  </div>
+  </div>
+	<div class="footer">
+		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+	</div>
+</div>
+</body>
+</html>

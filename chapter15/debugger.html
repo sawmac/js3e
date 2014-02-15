@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Debugging Programs</title>
+<link href="../_css/site.css" rel="stylesheet">
+<script src="_js/jquery-1.6.3.min.js"></script>
+<script>
+$(document).ready(function() {
+var score = 0;
+var quiz = [
+  ['How many moons does Earth have?',1,[0,1,2,3]],
+  ['How many moons does Saturn have?',31,[0,14,31,160]],
+  ['How many moons does Venus have?',1,[0,1,11,15]]
+;
+//get total number of questions
+var totalQuestion=quiz.length;
+
+//generate question and display multiple choice answers
+function askQuestion() {
+ // pick a  question
+ var currentQ=quiz.pop();
+ // get the question text
+ $('#question').text(currentQ[0]);
+ /* call buildAnswers() function to 
+    generate radio buttions with multiple choices */
+ var answers=buildAnswers(currentQ[2]);
+ // add choices to the page
+ $('#answers').html(answers);
+ // click() event handler to evaluate user answer
+ $('#answers input').click(function() {
+    if ($(this).val()==currentQ[1]) {
+      score++;
+      $('#result').prepend('That is correct!');
+    } else {
+      $('#result').prepend('That is incorrect. The correct answer is '+currentQ[1]);
+    }
+    // show the NEXT button
+    $('#next').show();
+  }); // end click()
+}
+
+function buildAnswers(answers) {
+  var answerHTML='';
+  // loop through each item in array answers
+  for (i=0;i<=answers.length;i++) {
+    //build radio button
+    answerHTML+=' <input name="quiz" type="radio" value="';
+    answerHTML+=answers[i] + '">' + answers[i];
+  }
+  //return completed HTML of radio buttons
+  return answerHTML;
+}
+
+function giveResults() {
+  var results='<p>You got ' + score + ' out of ' + totalQuestion + ' questions correct.</p>';
+  $('#questionArea').html(results); 
+}
+
+$('#next').click(function() {
+  $(this).hide();
+  $('#result').text('');
+  if (quiz.length==totalQuestion) {
+    $(this).val('Next Question >>');
+  } else if (quiz.length==1) {
+    $(this).val('Show results');
+  }
+  if (quiz.length>0) {
+    askQuestions();
+  } else {
+    giveResults();
+  }
+});
+
+
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<div class="header">
+		<p class="logo">JavaScript <i>&</i> jQuery <i class="mm">The<br>Missing<br>Manual</i></p>
+	</div>
+	<div class="content">
+		<div class="main">
+			<h1>Using Firebug&#8217;s Debugger</h1>
+			<div id="questionArea">
+  <p id="question"></p>
+  <p id="answers"></p>
+  <p id="result"></p>
+  <input type="button" value="Start Quiz" id="next">
+  </div>
+		</div>
+	</div>
+	<div class="footer">
+		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Flickr Feed</title>
+<link href="../_css/site.css" rel="stylesheet">
+<style>
+.image {
+	float: left;
+	padding: 10px;
+	border: solid 1px white;
+	margin: 0 30px 30px 0;
+}
+.image:hover {
+	border-color: red;
+	background-color: rgb(204,204,204);	
+}
+
+
+</style>
+<script src="../_js/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+
+var URL = "http://api.flickr.com/services/feeds/photos_public.gne";
+// change this ID to another flickr ID (like your own if you have one)
+var ID = "25053835@N03"; // ID for the Smithsonian Institution
+var jsonFormat = "&format=json&jsoncallback=?";
+var ajaxURL = URL + "?id=" + ID + jsonFormat;
+
+$.getJSON(ajaxURL,function(data) {
+	$('h1').text(data.title);
+	$.each(data.items,function(i,photo) {
+		var photoHTML = '<span class="image">';
+		photoHTML += '<a href="' + photo.link + '">';
+		photoHTML += '<img src="' + photo.media.m.replace('_m','_s') + '"></a></span>';
+		$('#photos').append(photoHTML);	
+	}); // end each
+}); // end get JSON
+			
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<div class="header">
+		<p class="logo">JavaScript <i>&</i> jQuery <i class="mm">The<br>Missing<br>Manual</i></p>
+	</div>
+	<div class="content">
+		<div class="main">
+			<h1>Flickr Images</h1>
+		<div id="photos"></div>
+        <br class="clearLeft">
+		</div>
+	</div>
+	<div class="footer">
+		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+	</div>
+</div>
+</body>
+</html>

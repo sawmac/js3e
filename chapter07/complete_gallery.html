@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Gallery</title>
+<link href="../_css/site.css" rel="stylesheet">
+<style>
+#gallery {
+	float: left;
+	width: 90px;
+	margin-right: 30px;
+	margin-left: 10px;
+	border-right: white 1px dotted;	
+}
+#gallery img {
+	display: inline-block;
+	margin: 0 0 10px 0;
+	border: 1px solid rgb(0,0,0);
+}
+#photo {
+	margin-left: 150px;	
+	position: relative;
+}
+#photo img {
+	position: absolute;	
+}
+
+</style>
+<script src="../_js/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+		
+$('#gallery img').each(function(i) {
+	var imgFile = $(this).attr('src');
+	var preloadImage = new Image();
+  var imgExt = /(\.\w{3,4}$)/;
+  preloadImage.src = imgFile.replace(imgExt,'_h$1');
+		
+	$(this).hover(
+		function() {
+			$(this).attr('src', preloadImage.src);
+		},
+		function () {
+		var currentSource=$(this).attr('src');
+			$(this).attr('src', imgFile);
+	}); // end hover
+}); // end each
+	
+	$('#gallery a').click(function(evt) {
+		//don't follow link
+		 evt.preventDefault();
+		 //get path to new image
+	   var imgPath = $(this).attr('href');
+		 //get reference to old image
+		 var oldImage = $('#photo img');
+		 			
+			 //create HTML for new image
+			 var newImage = $('<img src="' + imgPath +'">');
+			 //make new image invisible
+			 newImage.hide();
+			 //add to the #photo div
+			 $('#photo').prepend(newImage);
+			 //fade in new image
+			 newImage.fadeIn(1000);
+			 
+			 //fade out old image and remove from DOM
+			 oldImage.fadeOut(1000,function(){
+		     $(this).remove();
+				});
+			 
+		 
+	}); // end click
+		
+		$('#gallery a:first').click();
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+<div class="header">
+	<p class="logo">JavaScript <i>&</i> jQuery <i class="mm">The<br>Missing<br>Manual</i></p>
+</div>
+
+
+<div class="content">
+	<div class="main">
+		<h1>Gallery</h1>
+		<div id="gallery"> <a href="../_images/large/slide1.jpg"><img src="../_images/small/slide1.jpg" width="70" height="70" alt="golf balls"></a> <a href="../_images/large/slide2.jpg"><img src="../_images/small/slide2.jpg" width="70" height="70" alt="rock wall"></a> <a href="../_images/large/slide3.jpg"><img src="../_images/small/slide3.jpg" width="70" height="70" alt="old course"></a> <a href="../_images/large/slide4.jpg"><img src="../_images/small/slide4.jpg" width="70" height="70" alt="tees"></a> <a href="../_images/large/slide5.jpg"><img src="../_images/small/slide5.jpg" width="70" height="70" alt="tree"></a> <a href="../_images/large/slide6.jpg"><img src="../_images/small/slide6.jpg" width="70" height="70" alt="ocean course"></a></div>
+		<div id="photo"></div>
+	</div>
+</div>
+<div class="footer">
+<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+</div>
+</div>
+</body>
+</html>

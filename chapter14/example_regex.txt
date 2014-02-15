@@ -1,0 +1,24 @@
+US Zip Code REGEX
+var ZipCode = /\d{5}(-\d{4})?/;
+if you want to make sure the string ONLY contains a Zip Code use the ^ and $ to match the beginning and ending of the string like this:
+var ZipCode = /^\d{5}(-\d{4})?$/;
+
+US Phone Number REGEX
+var phoneNum = /\(?(\d{3})\)?[ -.](\d{3})[ -.](\d{4})/;
+if you want to make sure the string ONLY contains a phone number use the ^ and $ to match the beginning and ending of the string like this:
+var ZipCode = /^\(?(\d{3})\)?[ -.](\d{3})[ -.](\d{4})$/;
+
+Email Address REGEX
+var email = /[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}/;
+if you want to make sure the string ONLY contains an email address use the ^ and $ to match the beginning and ending of the string like this:
+var email = /^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/;
+
+Date REGEX
+var date = /([01]?\d)[-\/ .]([0123]?\d)[-\/ .](\d{4})/;
+if you want to make sure the string ONLY contains a date use the ^ and $ to match the beginning and ending of the string like this:
+var date = /^([01]?\d)[-\/ .]([0123]?\d)[-\/ .](\d{4})$/;
+
+URL REGEX
+var URL = /((\bhttps?:\/\/)|(\bwww\.))\S*/;
+if you want to make sure the string ONLY contains a URL use the ^ and $ to match the beginning and ending of the string and remove the \b characters like this:
+var URL = /^((https?:\/\/)|(www\.))\S*$/;

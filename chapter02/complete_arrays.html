@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Creating and Using Arrays</title>
+<link href="../_css/site.css" rel="stylesheet">
+<script>
+var authors = [ 'Ernest Hemingway',
+                'Charlotte Bronte',
+                'Dante Alighieri',
+                'Emily Dickinson'
+              ];
+
+</script>
+</head>
+
+<body>
+<div class="wrapper">
+  <header>
+    JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+  </header>
+  <div class="content">
+    <div class="main">
+      <h1>Creating and Using Arrays</h1>
+      <script>
+    		document.write('<p>The first author is <strong>');
+    		document.write(authors[0] + '</strong></p>');
+    		document.write('<p>The last author is <strong>');
+    		document.write(authors[authors.length-1] + '</strong></p>');
+    		authors.unshift('Stan Lee');
+    		document.write('<p>I almost forgot <strong>');
+    		document.write(authors[0]);
+    		document.write('</strong></p>');
+		  </script>
+    </div>
+  </div>
+  <footer>
+<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+</footer>
+</div>
+</body>
+</html>

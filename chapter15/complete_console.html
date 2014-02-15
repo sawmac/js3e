@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Firebug's Console</title>
+<link href="../_css/site.css" rel="stylesheet">
+<script src="../_js/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+  console.log('READY');	
+  $('#comments').keyup(function() {
+  	console.log('Event: keyup');
+  	 var text = $(this).val();
+   	console.log('Contents of comments: %s',text);
+	var chars = text.length;
+    console.log('Number of characters: %d',chars);
+	$('#count').text(chars + " characters");
+  }); // end keyup
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<div class="header">
+		<p class="logo">JavaScript <i>&</i> jQuery <i class="mm">The<br>Missing<br>Manual</i></p>
+	</div>
+	<div class="content">
+		<div class="main">
+			<h1>Using Firebug&#8217;s console.log() Function</h1>
+			
+ 
+			
+			 <form name="console" method="post" action="" id="console">
+<p>
+    <label for="comments">Comments</label>
+    <textarea name="comments" id="comments" cols="35" rows="5"></textarea> <span id="count"></span></p>
+    </form>
+		</div>
+	</div>
+	<div class="footer">
+		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+	</div>
+</div>
+</body>
+</html>

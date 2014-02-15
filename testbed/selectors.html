@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript &amp; jQuery:The Missing Manual</title>
+<link href="../_css/site.css" rel="stylesheet">
+<script src="../_js/jquery.min.js"></script>
+<script src="../_js/site.js"></script><script src="../_js/jquery-ui-1.8.13.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('#submit').attr("disabled","disabled");
+													 
+	var highlight = {
+		current: false
+	};
+	
+	$('#selectorList li').each(function(){
+		$(this).html('<a href="#">'+$(this).text()+'</a>');
+	});
+	
+	$('#selectorList li a').addClass('example').click(function(event) {
+		$('#selector').val($(this).text());
+		$('#apply').click();
+		event.stopPropagation();
+		return false;
+		
+	});
+	
+	$('#apply').click(apply);
+	$('form').submit(apply);
+										
+   function apply() {
+		var selector = $('#selector').val();
+		clearPage();
+		if (selector == '') {
+			return false;
+		} else {
+			$('#jquerySelector').text(selector);
+			highlight.current = $(selector);
+			highlight.current.each(function() {
+				
+				var w=$(this).outerWidth();
+				var h=$(this).outerHeight();
+				
+				var t=$(this).offset().top;
+				var l=$(this).offset().left;
+				var overlay = $('<span class="highlighted"></span>');
+				overlay.width(w).height(h);
+				overlay.css({top:t,left:l});
+				overlay.appendTo('body');
+				overlay.animate({ backgroundColor: "red" }, 1000)
+			});
+		}
+		$('#numElems').text(highlight.current.length);
+		return false;
+	}
+	
+	$('#resetPage').click(function() {
+		resetPage();
+	});
+	
+	
+	
+	$(document).click(function(event) {
+		$('.highlighted').remove();
+		$('#selector')[0].focus();
+	});
+
+	
+	function clearPage() {
+		$('#jquerySelector').html('&nbsp;&nbsp;');
+		$('.highlighted').remove();
+		$('#numElems').html('&nbsp;');
+	}	
+	
+	function resetPage() {
+		$('#selector').val('');
+   		clearPage();
+	}
+	
+});
+</script>
+</head>
+
+<body>
+<div class="wrapper">
+  <div class="header">
+  <p class="logo"><span class="js">JavaScript</span> <span class="amp">&amp;</span> <span class="jq">jQuery </span> <span class="mm">The<br>Missing<br>Manual</span></p>
+</div>
+  <div class="content">
+    <div class="main">
+      <h1>jQuery Selector Test Bed </h1>
+      <div class="col1">
+        <p>Type a jQuery selector in the field below to see what elements jQuery selects:</p>
+        <form name="form1" method="post" action="">
+          <div class="results">
+            <p>
+              <label><strong>Selector:</strong>
+                <input type="text" name="selector" id="selector">
+              </label>
+              <input type="submit" name="apply" id="apply" value="Apply">
+              <input type="reset" name="resetPage" id="resetPage" value="Reset">
+            </p>
+            <p><strong>jQuery code: </strong>$('<span id="jquerySelector">&nbsp;&nbsp;</span>')</p>
+            <p><strong>Elements found:</strong> <span id="numElems"></span></p>
+          </div>
+          <h2 class="shadowLine"> Sample Selectors (click to try)</h2>
+          <ul id="selectorList" class="sideBySide">
+            <li>*</li>
+            <li>body</li>
+            <li>p</li>
+            <li>.example</li>
+            <li>.main</li>
+            <li>.main h2</li>
+            <li>div>h2</li>
+            <li>h1+div</li>
+            <li>:text</li>
+            <li>#selectorList</li>
+            <li>p:first</li>
+            <li>.col2</li>
+            <li>p:even</li>
+            <li>p:odd</li>
+            <li>p:lt(3)</li>
+            <li>li:contains(.main)</li>
+            <li>p:has(strong)</li>
+            <li>a[href="#"]</li>
+            <li>a[href*="oreilly.com"]</li>
+            <li>a[href^="http://sawmac"]</li>
+            <li>:checked</li>
+            <li>:disabled</li>
+          </ul>
+        </form>
+      </div>
+      <div class="col2">
+        <h2>More HTML to Select</h2>
+        <h3>Heading 3</h3>
+        <p>Quis nostrud exercitation ut labore et <strong>dolore magna aliqua.</strong> Sed do eiusmod tempor incididunt cupidatat non </p>
+        <h3>Heading 3</h3>
+        <p>Quis <em>nostrud exercitation ut labore et dolore magna</em> aliqua. Sed do eiusmod tempor incididunt cupidatat non </p>
+        <h2>Form Fields</h2>
+        <form action="" method="post" name="form2" id="test">
+          <p>
+            <label>
+              <input name="checkbox1" type="checkbox" id="checkbox1" value="check1">
+              Checkbox</label>
+            <br>
+            <label>
+              <input name="checkbox2" type="checkbox" id="checkbox2" value="check2" checked>
+              Checkbox2</label>
+          </p>
+          <p>
+            <label>
+              <input name="radio" type="radio" id="radio1" value="yes" checked>
+              Radio1</label>
+            <label> <br>
+              <input type="radio" name="radio" id="radio2" value="no">
+              Radio2</label>
+          </p>
+          <p>
+            <input type="submit" name="submit" id="submit" value="Submit" style="margin-left:0;">
+          </p>
+        </form>
+        <ul>
+          <li>Bulleted List Item 1</li>
+          <li>Bulleted List Item 2</li>
+        </ul>
+      </div>
+      <br class="clearLeft">
+    </div>
+  </div>
+  <footer>
+<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+</footer>
+  <div id="resources">
+    <p class="open">+</p>
+    <h2>Test Beds</h2>
+    <ul class="nav">
+      <li><a href="selectors.html">jQuery Selectors Testbed</a></li>
+      <li><a href="content_functions.html">jQuery Content Functions Test Bed</a></li>
+      <li><a href="events.html">Events Test Bed</a></li>
+      <li><a href="effects.html">jQuery Effects Test Bed</a></li>
+      <li><a href="array_methods.html">Array Methods</a></li>
+      <li><a href="regex_tester.html">Regular Expression Tester</a></li>
+    </ul>
+    <h2>jQuery Resources</h2>
+    <ul class="nav">
+      <li><a href="http://jquery.com">jQuery</a></li>
+      <li><a href="http://jqueryui.com/">jQuery UI</a></li>
+      <li><a href="http://jquerymobile.com/">jQuery Mobile</a></li>
+      <li><a href="http://jqapi.com/">jQAPI.com</a></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

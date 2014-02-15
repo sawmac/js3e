@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Using .delegate()</title>
+<link href="../_css/site.css" rel="stylesheet">
+<style>
+.add {
+	display: inline-block;
+	background-color: rgba(255,255,255,.8);
+	font-size: 12px;
+	padding: 0 5px;
+	margin-left: 10px;
+	color: black;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.add:hover {
+	color: rgb(102,102,102);
+	background-color: rgb(204,255,0);	
+}
+</style>
+<script src="../_js/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+   // using bind
+   $('#without .add').bind('click',function() {
+	   var $this = $(this);
+	   var $parent = $this.parent();
+	   $parent.after($parent.clone());
+	   $this.remove();	   
+   }); // end bind
+   
+   //using delegate
+   $('#with').delegate('.add','click',function() {
+	   var $this = $(this);
+	   var $parent = $this.parent();
+	   $parent.after($parent.clone());
+	   $this.remove();	   
+   }); //end delegate
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<div class="header">
+		<p class="logo">JavaScript <i>&</i> jQuery <i class="mm">The<br>Missing<br>Manual</i></p>
+	</div>
+	<div class="content">
+	  <div class="main">
+	    <h1>Using .delegate()</h1>
+        <div id="without">
+        <h2>With Bind (only the first time works)</h2>
+        <p>Item <span class="add">add new item</span></p>   
+        </div>
+        <div id="with">
+        <h2>With Delegate (can keep adding items)</h2>
+        <p>Item <span class="add">add new item</span></p>   
+        </div>
+  </div>
+	<div class="footer">
+		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+	</div>
+</div>
+</body>
+</html>

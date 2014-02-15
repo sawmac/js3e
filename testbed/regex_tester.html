@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript &amp; jQuery:The Missing Manual</title>
+<link href="../_css/site.css" rel="stylesheet">
+<script src="../_js/jquery.min.js"></script>
+<script src="../_js/site.js"></script><script>
+$(document).ready(function() {
+		var regObject = {};
+			
+		function displayResults(message) {
+			if ($('#resultSection:visible').length==0) $('#resultSection').show();
+			$('#testResults').html('<p>' + message + '</p>');
+		}
+		
+		function buildResults() {
+			var resultString="No match"; // default setting
+			var formatSearch = regObject.testString.replace(regObject.regex,'<strong class="found">$&</strong>');
+			
+
+			switch (regObject.method) {
+				case 'search' :
+					if(regObject.results==-1) break; // no match
+					resultString = 'Found at position ' + regObject.results;
+					resultString += ' in string: <br>' + formatSearch + '';
+					break;
+				case 'match' : 
+					if (! regObject.results) break; // no match
+					resultString = '';
+					for (i in regObject.results) {
+						resultString += (i + ':');
+						if (i == 'input') {
+							resultString += (formatSearch);
+						} else {
+							resultString += regObject.results[i];
+						}
+						resultString += '<br>';
+					}
+					break;
+				case 'replace' :
+					if (regObject.results==regObject.testString) break; // no match
+					resultString = '';
+					resultString += regObject.results;
+					break;
+			}
+			var prependString = "Regex: " + regObject.reValue + "<br>";
+			return prependString + resultString;
+		}
+				
+	
+
+			
+		$('#regexTester').submit(function() {
+			
+			//get string
+			regObject.testString = $('#string').val();
+			
+			//any options
+			regObject.options='';
+			$(':checkbox:checked').each(function() {
+				regObject.options += $(this).val();																 
+			});
+			
+			
+			//get regular expression value and convert to regex
+			regObject.reValue = $('#regex').val();
+			try {
+			regObject.regex = new RegExp(regObject.reValue,regObject.options);
+			} catch (e) {
+				displayResults("ERROR IN YOUR REGULAR EXPRESSION<br>" + e);
+				return false;
+			}
+			
+			//method
+			regObject.method = $('[name=method]:checked').val();
+			
+			//replace
+			if (regObject.method=='replace') {
+				regObject.replaceString = $('#replaceString').val();
+			}
+			
+			if (regObject.method=='search') {
+				regObject.results = regObject.testString.search(regObject.regex);
+			} else if (regObject.method=='match')  {
+				regObject.results = regObject.testString.match(regObject.regex);
+			}	else {
+				regObject.results = regObject.testString.replace(regObject.regex,'<strong class="found">' + regObject.replaceString + "</strong>");
+			}
+			displayResults(buildResults());
+		
+				
+	
+			return false;
+			
+	  });
+		
+		//hide replacement box until needed
+		$('#replaceBox').hide();
+		//show replacement box when replace selected
+		$('#replace').click(function() {
+			$('#replaceBox').show('fast')
+		 });
+		//hide replacement box if either of the other two buttons selected
+		$('#search, #match').click(function() {
+			$('#replaceBox').hide('fast')
+		});
+});
+
+
+
+</script>
+</head>
+
+<body>
+<div class="wrapper">
+  <div class="header">
+	<p class="logo"><span class="js">JavaScript</span> <span class="amp">&amp;</span> <span class="jq">jQuery </span> <span class="mm">The<br>Missing<br>Manual</span></p>
+</div>
+  <div class="content">
+    <div class="main">
+      <h1>Regular Expression Tester</h1>
+      <div class="results resultSection">
+        <h2>Results <small>(Matched text in red)</small></h2>
+        <div id="testResults">&nbsp;</div>
+      </div>
+      <form action="" method="post" name="form1" id="regexTester">
+        <h2>Test</h2>
+        <p>
+          <label for="string" class="label">String to search</label>
+          <textarea name="string" rows="3" class="wide" id="string"></textarea>
+        </p>
+        <p>
+          <label for="regex" class="label">Regular Expression to use</label>
+          <input name="regex" type="text" class="wide" id="regex">
+        </p>
+        <p><span class="label">Method to Use</span>
+          <label>
+            <input name="method" type="radio" id="search" value="search" checked>
+            Search</label>
+          &nbsp;&nbsp;
+          <label>
+            <input type="radio" name="method" id="match" value="match">
+            Match</label>
+          &nbsp;&nbsp;
+          <label>
+            <input type="radio" name="method" id="replace" value="replace">
+            Replace</label>
+        </p>
+        <div id="replaceBox">
+          <label for="replaceString">Replace with:</label>
+          <input name="replaceString" type="text" class="medium" id="replaceString">
+        </div>
+        <p><span class="label">Options</span>
+          <label>
+            <input name="case" type="checkbox" id="case" value="i">
+            Case Insensitive</label>
+          &nbsp;&nbsp;
+          <label>
+            <input name="global" type="checkbox" id="global" value="g">
+            Global</label>
+        </p>
+        <input type="submit" name="button" id="button" value="Run">
+      </form>
+    </div>
+  </div>
+  <footer>
+<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+</footer>
+  <div id="resources">
+    <p class="open">+</p>
+    <h2>Test Beds</h2>
+    <ul class="nav">
+      <li><a href="selectors.html">jQuery Selectors Testbed</a></li>
+      <li><a href="content_functions.html">jQuery Content Functions Test Bed</a></li>
+      <li><a href="events.html">Events Test Bed</a></li>
+      <li><a href="effects.html">jQuery Effects Test Bed</a></li>
+      <li><a href="array_methods.html">Array Methods</a></li>
+      <li><a href="regex_tester.html">Regular Expression Tester</a></li>
+    </ul>
+    <h2>jQuery Resources</h2>
+    <ul class="nav">
+      <li><a href="http://jquery.com">jQuery</a></li>
+      <li><a href="http://jqueryui.com/">jQuery UI</a></li>
+      <li><a href="http://jquerymobile.com/">jQuery Mobile</a></li>
+      <li><a href="http://jqapi.com/">jQAPI.com</a></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>A Simple Quiz</title>
+<link href="../_css/site.css" rel="stylesheet">
+<script>
+var score=0;
+var questions = [
+ ['How many moons does Earth have?', 1],
+ ['How many moons does Saturn have?',31],
+ ['How many moons does Venus have?', 0]
+];
+function askQuestion(question) {
+ var answer = prompt(question[0],'');
+    if (answer == question[1]) {
+        alert('Correct!');
+        score++;
+    } else {
+        alert('Sorry. The correct answer is ' + question[1]);
+    }
+}
+for (var i=0; i<questions.length; i++) {
+ askQuestion(questions[i]);
+}
+
+</script>
+</head>
+
+<body>
+<div class="wrapper">
+<header>
+    JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+  </header>
+<div class="content">
+	<div class="main">
+<h1>A Simple Quiz</h1>
+		<script>
+		var message = 'You got ' + score;
+		message += ' out of ' + questions.length;
+		message += ' questions correct.';
+		document.write('<p>' + message + '</p>');
+		</script> </div>
+</div>
+    <footer>
+        <p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+    </footer>
+</div>
+</body>
+</html>

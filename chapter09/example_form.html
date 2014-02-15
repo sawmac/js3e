@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Form Fun</title>
+<link href="../_css/site.css" rel="stylesheet">
+<script src="../_js/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<div class="header">
+		<p class="logo">JavaScript <i>&</i> jQuery <i class="mm">The<br>
+			Missing<br>
+			Manual</i></p>
+	</div>
+	<div class="content">
+	<div class="main">
+	<h1>Signup</h1>
+		<form action="process.html" method="post" name="signup" id="signup">
+			<div>
+				<label for="name" class="label">Name </label>
+				<input name="name" type="text" class="required" id="name" title="Please type your name.">
+			</div>
+			<div><span class="label">Hobbies</span>
+				<input name="hobby" type="checkbox" id="heliskiing" value="heliskiing" class="required" title="Please check at least 1 hobby.">
+				<label for="heliskiing">Heli-skiing</label>
+				<input name="hobby" type="checkbox" id="pickle" value="pickle">
+				<label for="pickle">Pickle eating</label>
+				<input name="hobby" type="checkbox" id="walnut" value="walnut">
+				<label for="walnut">Making walnut butter</label>
+			</div>
+			<div>
+				<label for="planet" class="label">Planet of Birth</label>
+				<select name="planet" id="planet" class="required" title="Please choose a planet.">
+					<option value="">--Please select one--</option>
+					<option value="earth">Earth</option>
+					<option value="mars">Mars</option>
+					<option value="alpha centauri">Alpha Centauri</option>
+					<option value="forget about it">You've never heard of it</option>
+				</select>
+			</div>
+	
+			<div class="labelBlock">Would you like to receive annoying e-mail from us? </div>
+			<div class="indent">
+				<input  type="radio" name="spam" id="yes" value="yes" class="required" title="Please select an option">
+				<label for="yes">Yes</label>
+				<input type="radio" name="spam" id="definitely" value="definitely">
+				<label for="definitely">Definitely</label>
+				<input type="radio" name="spam" id="choice" value="choice">
+				<label for="choice">Do I have a choice?</label>
+			</div>
+			<div>
+				<input type="submit" name="submit" id="submit" value="Submit">
+			</div>
+		</form>
+		</div>
+	</div>
+	<div class="footer">
+		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+	</div>
+</div>
+</body>
+</html>
