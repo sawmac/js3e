@@ -160,6 +160,7 @@ h2 {
 	font-family: 'ColaborateMediumRegular', Arial, sans-serif;
 	font-weight: normal;
 	margin-bottom: 5px;
+	font-size: 20px;
 }
 
 
@@ -201,6 +202,7 @@ header .amp {
 .content {
 	max-width: 760px;
 	margin: 0 auto;
+	position: relative;
 }
 
 footer {
@@ -447,7 +449,9 @@ background-color:#FFC;
 	padding: 15px;
 	border: 1px dotted #FFF;
 	font-size: 80%;
-	margin-bottom: 25px;
+	margin-top: 25px;
+	background-color: rgba(214,223,226,.5);
+	border-radius: 10px;
 }
 
 #gallery img {
@@ -517,4 +521,17 @@ form .indent, #submit {
 
 #signup .indent label.error {
   margin-left: 0;
+}
+
+#events body {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+#events fieldset { 
+	border: 1px solid black;
+}
+#events legend {
+	font: 150% 'League Gothic';
 }
