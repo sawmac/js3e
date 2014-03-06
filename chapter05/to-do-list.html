@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Introducing Events</title>
+<link href="../_css/site.css" rel="stylesheet">
+<script src="../_js/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$('form').submit(function(evt){
+		evt.preventDefault();
+	}); // end submit
+	$('#button').click(function() {
+		var $field = $('#textfield')
+		var fieldVal = $field.val();
+		if (fieldVal) { 
+			$('#tasklist').append('<li>' + fieldVal + '</li>' );
+			$field.val('');
+			$field.focus();
+		}
+	})// end click
+	$('#tasklist').on('click','li',function() {
+		console.log($(this));
+		$(this).css({
+			'text-decoration' : 'line-through',
+			'font-weight' : 'bold',
+			'color' : 'lightgrey'
+		}); // end css
+	}); // end on
+});
+</script>
+</head>
+<body id="events">
+<div class="wrapper">
+	<header>
+		JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+	</header>
+	<div class="content">
+		<div class="main">
+			<form action="#" method="get">
+		<p><input name="textfield" type="text" id="textfield"> <input name="button" type="button" id="button" value="Add Task"></p>
+		</form>
+		<h1>To Do List</h1>
+		<ul id="tasklist">
+
+		</ul>
+		</div>
+	</div>
+	<footer>
+		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+	</footer>
+</div>
+</body>
+</html>
