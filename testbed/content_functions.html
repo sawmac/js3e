@@ -16,13 +16,14 @@ $(document).ready(function( ) {
 			text = $('#content').val();
 			var codeElem = $(this).find('code');
 			var code = codeElem.text();
-			code = code.replace(/\(\)/,"('" + text + "')");
+      if (code.indexOf("remove();") == -1) {
+			 code = code.replace(/\(\)/,"('" + text + "')");
+      }
 			$('#jquery').text(code);
 			eval(code);
 			var newHTML=$('#messageBox #changeContainer').html();
 			newHTML = newHTML.replace(/></g,'> <');
 			$('#after').text(newHTML);
-			console.log($('#message').length);
 			if ($('#message').length<1){
 				if ($('#reload').length<1) {
 					var reloadHTML='<p class="example" id="reload">The message box is gone! You used either the .replaceWith() of .remove() function. Click here to re-create the message box.';
@@ -37,9 +38,10 @@ $(document).ready(function( ) {
 	});
 	
 	function resetBox() {
-		console.log('here');
 	    var boxHTML = '<div id="message"><p>New content will go here</p></div>';
 		$('#changeContainer').html(boxHTML);
+    $('#after').text('');
+    $('#before').text(boxHTML);
 	}
 	
 });
@@ -78,9 +80,9 @@ $(document).ready(function( ) {
 
 <body>
 <div class="wrapper">
-  <div class="header">
-	<p class="logo"><span class="js">JavaScript</span> <span class="amp">&amp;</span> <span class="jq">jQuery </span> <span class="mm">The<br>Missing<br>Manual</span></p>
-</div>
+  <header>
+    JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+  </header>
   <div class="content">
     <div class="main">
       <h1>jQuery Content Function Tester</h1>

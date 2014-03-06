@@ -5,7 +5,8 @@
 <title>JavaScript &amp; jQuery:The Missing Manual</title>
 <link href="../_css/site.css" rel="stylesheet">
 <script src="../_js/jquery.min.js"></script>
-<script src="../_js/site.js"></script><script src="../_js/jquery-ui-1.8.13.min.js"></script>
+<script src="../_js/jquery-ui-min.js"></script>
+<script src="../_js/site.js"></script>
 <script>
 $(document).ready(function() {
   $('#submit').attr("disabled","disabled");
@@ -38,13 +39,12 @@ $(document).ready(function() {
 			$('#jquerySelector').text(selector);
 			highlight.current = $(selector);
 			highlight.current.each(function() {
-				
-				var w=$(this).outerWidth();
-				var h=$(this).outerHeight();
-				
-				var t=$(this).offset().top;
-				var l=$(this).offset().left;
-				var overlay = $('<span class="highlighted"></span>');
+				var $this = $(this),
+            w=$this.outerWidth(),
+            h=$this.outerHeight(),
+            t=$this.offset().top,
+            l=$this.offset().left,
+            overlay = $('<span class="highlighted"></span>');
 				overlay.width(w).height(h);
 				overlay.css({top:t,left:l});
 				overlay.appendTo('body');
@@ -84,9 +84,9 @@ $(document).ready(function() {
 
 <body>
 <div class="wrapper">
-  <div class="header">
-  <p class="logo"><span class="js">JavaScript</span> <span class="amp">&amp;</span> <span class="jq">jQuery </span> <span class="mm">The<br>Missing<br>Manual</span></p>
-</div>
+  <header>
+    JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+  </header>
   <div class="content">
     <div class="main">
       <h1>jQuery Selector Test Bed </h1>

@@ -3,7 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <title>JavaScript &amp; jQuery:The Missing Manual</title>
+<link href="../_css/site.css" rel="stylesheet">
 <style>
+body {
+	 -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   /*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: none;
+   user-select: none;
+}
+ul:last-of-type {
+	padding-bottom: 200px;
+}
+.sideBySide {
+	padding: 0;
+	margin: 0;
+}
+.sideBySide li {
+	list-style: none;
+}
 .disabled {
 	color: #CCC;
 	font-weight: normal;
@@ -20,6 +42,29 @@
 	width: 65%;
 	clear: left;
 }
+h2.shadowline {
+	background-color: rgba(255,255,255,.5);
+}
+#mousemove {
+	position: relative;
+	overflow: visible;
+}
+#mousemove small {
+	position: absolute;
+	top: 40%;
+	display: inline-block;
+	background-color: red;
+	right: -15px;
+	padding: 2px;
+	line-height: 1;
+	z-index: 100;
+	font-size: 50%;
+	font-weight: bold;
+	color: white;
+}
+#mousemove.disabled small {
+	background-color: green;
+}
 #target {
 	float: right;
 	width: 125px;
@@ -28,17 +73,18 @@
 	border: 1px solid #333;
 }
 #monitor {
-	height: 390px;
+	height: 450px;
 	overflow: hidden;
 	padding: 10px 10px 10px 10px;
 	position: absolute;
 	font-size: 1.2em;
-	width: 200px;
-	background-color: rgb(90,115,185);
+	width: 180px;
+	background-color: rgba(255,211,224,.5);
 	-webkit-box-shadow: 1px 1px 2px rgba(0,0,0,.75);
 	-moz-box-shadow: 1px 1px 2px rgba(0,0,0,.75);
 	box-shadow: 1px 1px 2px rgba(0,0,0,.75);
-	left: 800px;
+	left: 700px;
+	top: 60px;
 }
 #monitor h2 small {
 	font-size: 70%;
@@ -55,14 +101,7 @@
 	margin: 0;
 	padding: 0;
 }
-#monitorOverlay {
-	background: url(../_images/monitor_overlay.png) no-repeat;
-	position: absolute;
-	left: 0;
-	top: -3px;
-	width: 150px;
-	height: 330px;
-}
+
 #sidebar .event {
 	float: left;
 	width: 65%;
@@ -134,18 +173,28 @@ form p {
 input:focus {
 	background-color: #9C9;
 }
+
 .events li {
 	font-size: 95%;
+	width: 100px;
+	padding: 10px;
+	border-radius: 5px;
+	margin-right:10px;
+}
+
+#keys li {
+	font-size: 95%;
+	width: auto;
+	padding: 0;
+	border-radius: auto;
 	margin: 5px 0 0 0;
 }
 .events h2 {
 	margin: 10px 0 5px 0;
 }
 </style>
-<link href="../_css/site.css" rel="stylesheet">
 <script src="../_js/jquery.min.js"></script>
-<script src="../_js/jquery-ui-1.8.13.min.js"></script>
-<script src="../_js/jquery.color.js"></script>
+<script src="../_js/jquery-ui-min.js"></script>
 <script src="../_js/site.js"></script>
 <script>
 $(document).ready(function() {
@@ -153,27 +202,32 @@ $(document).ready(function() {
 var eventsBound=false;
 var mouseMoveBound=true;												 
 
-$('<div id="monitorOverlay"></div>').appendTo($('#monitor'));
 $('#monitor h2 small').wrap('<a href="#"></a>');
 $('#monitor h2').click(function(evt) {
 	$('#monitorResults').html('');
-	evt.stopPropagation();																	});
+	evt.stopPropagation();												
+});
 
 $('#mousemove small').wrap('<a href="#"></a>');
-$('#mousemove a').toggle(function(evt) {
-	$(document).unbind('mousemove');
-	$('#mousemove small').text('enable');
-	$(this).parent().addClass('disabled');
-	mouseMoveBound=false;
-																	},
-													function(evt) {
-	$('#mousemove small').text('disable');
-	$(this).parent().removeClass('disabled');
-	mouseMoveBound=true;
-	$(document).bind('mousemove', function(evt) {																		
-		handle($('#'+evt.type),evt,this);
-	});
-																	});
+$('#mousemove a').on('click',function(evt) {
+	var $this = $(this);
+	if ($this.parent().hasClass('disabled')) {
+		$('#mousemove small').text('stop');
+		$this.parent().removeClass('disabled');
+		mouseMoveBound=true;
+		$(document).on('mousemove', function(evt) {							
+			handle($('#'+evt.type),evt,this);
+		});
+	} else {
+		$(document).off('mousemove');
+		$('#mousemove small').text('start');
+		$this.parent().addClass('disabled');
+		mouseMoveBound=false;
+	}
+});
+
+
+
 
 var events=['click',
 			'dblclick',
@@ -191,8 +245,8 @@ var events=['click',
 
 var winEvents=['load',
 			   'resize',
-			   'scroll',
-			   'unload'];
+			   'scroll'
+			 	];
 
 
 
@@ -211,11 +265,11 @@ $('#button').click(function() {
 		
 var unBindEvents = function() {
 	for (var i=0;i<events.length; i++) {
-	$(document).unbind(events[i]);
-	$('*:not("#monitor h2, #button")').unbind(events[i]);
+	$(document).off(events[i]);
+	$('*:not("#monitor h2, #button")').off(events[i]);
 	}
 	for (var j=0;j<winEvents.length; j++) {
-	$(window).unbind(winEvents[j]);
+	$(window).off(winEvents[j]);
 	}
 	eventsBound=false;
 }
@@ -223,62 +277,59 @@ var unBindEvents = function() {
 
 var bindEvents= function() {
 
-eventsBound = true; 
-
-$(window).unload(function() {
-													alert('"bye bye!" says the unload event.');
-													});
-
-$('#prop, #noProp').bind('click.test',function(evt) {
-	var idName = $(this).attr('id');
-	$('#' + idName + 'Elems').text('1');
-	$('#' + idName + 'Tags').text(this.tagName);
-	handle($('#click'),evt,this);
-	if (idName == 'noProp') evt.stopPropagation();
-});
-
-$(':text').bind('focus.test',function(evt) {
-	handle($('#focus'),evt,this);
-	evt.stopPropagation();
-});
-
-$(':text').bind('blur.test',function(evt) {
-	handle($('#blur'),evt,this);
-	evt.stopPropagation();
-});
-
-$('*:has(#prop)').bind('click.test',function(evt) {
-		if ($(evt.target).attr('ID')!='prop') return;
-		$('#propTags').append(", " + this.tagName);
-		var currentClicks = parseInt($('#propElems').text());
-		$('#propElems').text(currentClicks + 1);
+	eventsBound = true; 
+	
+	
+	$('#prop, #noProp').on('click',function(evt) {
+		var idName = $(this).attr('id');
+		$('#' + idName + 'Elems').text('1');
+		$('#' + idName + 'Tags').text(this.tagName);
 		handle($('#click'),evt,this);
-});
+		if (idName == 'noProp') evt.stopPropagation();
+	});
+
+	$(':text').on('focus',function(evt) {
+		handle($('#focus'),evt,this);
+		evt.stopPropagation();
+	});
+
+	$(':text').on('blur',function(evt) {
+		handle($('#blur'),evt,this);
+		evt.stopPropagation();
+	});
+
+	$('*:has(#prop)').on('click',function(evt) {
+			if ($(evt.target).attr('ID')!='prop') return;
+			$('#propTags').append(", " + this.tagName);
+			var currentClicks = parseInt($('#propElems').text());
+			$('#propElems').text(currentClicks + 1);
+			handle($('#click'),evt,this);
+	});
 
 
 
-for (i=0;i<events.length;i++) {
-$(document).bind(events[i]+'.test',function(evt) {
-	handle($('#'+evt.type),evt,this);
-});
-}
+	for (i=0;i<events.length;i++) {
+	$(document).on(events[i],function(evt) {
+		handle($('#'+evt.type),evt,this);
+	});
+	}
 
 
-for (var j=0;j<winEvents.length;j++) {
-$(window).bind(winEvents[j]+'.test',function(evt) {
-	handle($('#'+evt.type),evt,this);
-});
-}
+	for (var j=0;j<winEvents.length;j++) {
+	$(window).on(winEvents[j],function(evt) {
+		handle($('#'+evt.type),evt,this);
+	});
+	}
 
-$(document).bind('keydown.test',function(evt) {
-				updateKey('#keydown',evt);
-});
-$(document).bind('keyup.test',function(evt) {
-				updateKey('#keyup',evt);
-});
-$(document).bind('keypress.test',function(evt) {
-				updateKey('#keypress',evt);
-});
+	$(document).on('keydown',function(evt) {
+					updateKey('#keydown',evt);
+	});
+	$(document).on('keyup',function(evt) {
+					updateKey('#keyup',evt);
+	});
+	$(document).on('keypress',function(evt) {
+					updateKey('#keypress',evt);
+	});
 
 };
 
@@ -297,7 +348,9 @@ function handle(elem,evt,targElem) {
 	
 function highlight(elem) {
 	if (elem.is(':animated')) return;
-	elem.animate({ backgroundColor: "red" },250).animate({ backgroundColor: "transparent" }, 1000);
+	//var colorStart = jQuery.Color( "rgb(214,223,226);" );
+	colorStart="red";
+	elem.animate({ backgroundColor: colorStart },250).animate({ backgroundColor: "transparent" }, 1000);
 }
 
 function updateMonitor(evt) {
@@ -331,10 +384,10 @@ function updateKey(elem, evt) {
 </head>
 
 <body>
-<div class="wrapper">
-  <div class="header">
-	<p class="logo"><span class="js">JavaScript</span> <span class="amp">&amp;</span> <span class="jq">jQuery </span> <span class="mm">The<br>Missing<br>Manual</span></p>
-</div>
+<div class="wrapper clear">
+  	<header>
+	    JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+	</header>
   <div class="content">
     <div id="monitor">
       <h2>Event Monitor <small>(clear)</small></h2>
@@ -357,7 +410,7 @@ function updateKey(elem, evt) {
       <ul class="sideBySide clear">
         <li id="mouseover">mouseover</li>
         <li id="mouseout">mouseout</li>
-        <li id="mousemove">mousemove&nbsp;&nbsp;<small>disable</small></li>
+        <li id="mousemove">mousemove&nbsp;&nbsp;<small>stop</small></li>
       </ul>
       <div id="keys">
         <h2 class="shadowLine">Key Events</h2>
@@ -415,7 +468,6 @@ function updateKey(elem, evt) {
         <li id="load">load</li>
         <li  id="resize">resize</li>
         <li  id="scroll">scroll</li>
-        <li  id="unload">unload</li>
       </ul>
     </div>
   </div>
