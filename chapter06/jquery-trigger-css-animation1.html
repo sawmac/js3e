@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery + CSS Animations</title>
+<link href="../_css/site.css" rel="stylesheet">
+<style>
+@-webkit-keyframes growProgressBar{
+	0% {
+		width: 0;
+		background-color: red;
+	}
+	50%  {
+		background-color: yellow;
+	}
+	100% {
+		width: 88%;
+		background-color: green;
+	}
+}
+@keyframes growProgressBar{
+	0% {
+		width: 0%;
+		background-color: red;
+	}
+	50% {
+		background-color: yellow;
+	}
+	100% {
+		width:88%;
+		background-color: green;
+	}
+}
+
+.progressBar {
+	width: 0%;
+	margin-left: 12%;
+	margin-top: 40px;
+	height: 50px;
+	-webkit-animation-name: growProgressBar;
+	-webkit-animation-duration: 3s;
+	-webkit-animation-fill-mode: forwards;
+	-webkit-animation-play-state: paused;
+	animation-name: growProgressBar;
+	animation-duration: 3s;
+	animation-fill-mode: forwards;
+	animation-play-state: paused;
+}
+.buttonContainer {
+	float: left;
+	width: 10%;
+}
+.button {
+	border-radius: 6px;
+	background: lightgrey;
+	text-align: center;
+	font-size: .8em;
+	padding: 4px 0 1px 0;
+	margin-top: 10px;
+}
+.button:hover {
+	color: white;
+	background-color: red;
+	cursor: pointer;
+}
+.active {
+	background-color: green;
+	color: white;
+}
+
+</style>
+<script src="../_js/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#play').click(function(evt) {
+			$('#pause').removeClass('active');
+			$(this).addClass('active');
+			$('.progressBar').css('animation-play-state','running');
+		}); // end click
+		$('#pause').click(function(evt) {
+			$('#play').removeClass('active');
+			$(this).addClass('active');
+			$('.progressBar').css('animation-play-state','paused');
+		}); // end click
+	});
+</script>
+</head>
+<body>
+<div class="wrapper">
+  <header>
+    JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+  </header>
+
+<div class="content">
+<div class="main">
+<h1>CSS Animation Triggered By jQuery</h1>
+<div class="buttonContainer">
+	<div class="button" id="play"><h2>Play</h2></div>
+	<div class="button" id="pause"><h2>Pause</h2></div>
+</div>
+<div class="progressBar"></div>
+</div>
+</div>
+<footer>
+    <p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+  </footer>
+</div>
+</body>
+</html>

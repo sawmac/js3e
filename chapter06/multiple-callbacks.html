@@ -8,7 +8,7 @@
 #figure {
   position: relative;
   width: 400px;
-  margin: 0 auto;
+  margin: 0;
   height: 300px;
   overflow: hidden;
 }
@@ -27,6 +27,7 @@
 	padding: 5px;
 	border: 1px solid white;
 	display: none;
+  color: white;
 }
 </style>
 <script src="../_js/jquery.min.js"></script>
@@ -50,9 +51,9 @@ $('#photo').animate(
 </head>
 <body>
 <div class="wrapper">
-<div class="header">
-	<p class="logo">JavaScript <i>&</i> jQuery <i class="mm">The<br>Missing<br>Manual</i></p>
-</div>
+ <header>
+    JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+  </header>
 <div class="content">
 	<div class="main">
 <h1>Using Multiple Callbacks  with animate()</h1>
@@ -60,9 +61,9 @@ $('#photo').animate(
 <p id="caption">Pencils!!!!!!</p></div>
 	</div>
 </div>
-<div class="footer">
-<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
-</div>
+<footer>
+    <p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+</footer>
 </div>
 </body>
 </html>

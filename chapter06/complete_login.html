@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Slide in Login Screen</title>
+<link href="../_css/site.css" rel="stylesheet">
+<style>
+#login {
+	width: 300px;
+	position: absolute;
+	right: 0;
+	top: -51px;
+	z-index: 100;
+	background-color: rgb(27,45,94);
+	border-radius: 0 0 5px 5px;
+}
+
+#login a {
+	text-decoration: none;
+}
+#open {
+	margin: 0;
+	cursor: pointer;
+	background-image:  url(../_images/open.png);
+	background-repeat: no-repeat;
+	background-position:  8px 7px;
+	color: white;
+	padding: 5px 0 5px 30px;
+	border-radius: 0 0 5px 5px;
+}
+
+#login .close {
+	background-image: url(../_images/close.png);
+}
+
+#open:hover {
+	color: rgb(0,0,0);
+	background-color: rgb(200,200,200);	
+}
+
+#login form {
+	padding: 10px 10px 0 10px;
+	display: none;	
+}
+#login label {
+	font-size: .75em;
+	color: white;
+	font-weight: bold;
+	width: 100px;
+	text-align:right;
+	margin: 0 15px 0 0;
+	display: inline-block;
+}
+#login input[type="text"] {
+	font-size: 14px;
+	width: 140px;	
+}
+#login .button {
+	text-align: right;	
+	padding-right: 15px;
+}
+</style>
+<script src="../_js/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('#open').click(function(evt) {
+  	 evt.preventDefault();
+	 $('#login form').slideToggle(300);
+	 $(this).toggleClass('close'); 
+  }); // end click
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+  <header>
+    JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+  </header>
+<div class="content">
+<div id="login">
+<a href="form.html"><p id="open">Login</p></a>
+<form>
+	<p>
+		<label for="username">Username:</label>
+		<input type="text" name="username" id="username">
+	</p>
+	<p>
+		<label for="password">Password: </label>
+		<input type="text" name="password" id="password">
+	</p>
+	<p class="button">
+		<input type="submit" name="button" id="button" value="Submit" >
+	</p>
+</form>
+</div>
+<div class="main">
+<h1>Slid
+e in Login Screen</h1>
+<p>Click the login button at the top of the page</p>
+</div>
+</div>
+<footer>
+    <p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+  </footer>
+</div>
+</body>
+</html>
+
+</html>

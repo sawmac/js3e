@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery + CSS Transitions</title>
+<link href="../_css/site.css" rel="stylesheet">
+<style>
+ img {
+  opacity: 1;
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  -o-transition: opacity 1s;
+  transition: opacity 1s;
+}
+img.faded {
+  opacity: 0;
+}
+
+</style>
+<script src="../_js/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('img').click(function(evt) {
+			$(this).toggleClass('faded');
+			evt.stopPropagation(); // prevent this click from going to the HTML element
+		}); //end click
+		$('html').click(function(){
+			$('.faded').removeClass('faded');
+		}); // end click
+	});
+</script>
+</head>
+<body>
+<div class="wrapper">
+  <header>
+    JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+  </header>
+
+<div class="content">
+<div class="main">
+<h1>CSS Transition Triggered By jQuery</h1>
+<p>Click a photo to make it fade out. Click the empty spot where the photo was to bring it back.</p>
+<p><img src="../_images/small/blue_h.jpg" width="70" height="70" alt="blue">
+<img src="../_images/small/green_h.jpg" width="70" height="70" alt="green">
+<img src="../_images/small/orange_h.jpg" width="70" height="70" alt="orange">
+<img src="../_images/small/purple_h.jpg" width="70" height="70" alt="purple">
+<img src="../_images/small/red_h.jpg" width="70" height="70" alt="red">
+<img src="../_images/small/yellow_h.jpg" width="70" height="70" alt="yellow"></p>
+<p>Click anywhere else on the page to fade the photos back into view.</p>
+</div>
+</div>
+<footer>
+    <p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+  </footer>
+</div>
+</body>
+</html>
