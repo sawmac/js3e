@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>A simple ligthbox</title>
+<link href="../_css/site.css" rel="stylesheet">
+<link href="gallery.css" rel="stylesheet">
+<script src="../_js/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$('#gallery a').click(function(evt) {
+		var imgPath, newImage;
+		//get path to new image
+	  	imgPath = $(this).attr('href');
+	   	//create HTML for new image
+		newImage = $('<img src="' + imgPath +'">').css('opacity',0).load(displayImage);
+		//don't follow link
+		evt.preventDefault();
+		//don't let event go up page
+		evt.stopPropagation();
+	}); // end click
+
+	function displayImage() {
+		$img = $(this);
+	   	// add overlay
+		$('<div id="overlay"><div id="photo"></div></div>').prependTo('body');
+		// select photo div
+		$photoDiv = $('#photo');
+		//add to the #photo div
+		$photoDiv.append($img);	
+		
+		// position image
+    	$photoDiv.css({marginLeft : ($img.outerWidth()/2) * -1, marginTop : ($img.outerHeight()/2) * -1});
+
+
+    	//fade in new image
+		$img.animate({opacity: 1}, 1000);
+	}
+
+	$('html').on('click',function(evt) {
+		var $overlay = $('#overlay');
+		if (evt.target == $overlay.get(0)) {
+				$overlay.remove();
+		}	
+	});
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+<header>
+    JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+  </header>
+
+
+<div class="content">
+	<div class="main">
+		<h1>Gallery</h1>
+		<div id="gallery">
+		<a href="../_images/large/slide1.jpg"><img src="../_images/small/slide1_h.jpg" width="70" height="70" alt="golf balls"></a>
+		<a href="../_images/large/slide2.jpg"><img src="../_images/small/slide2_h.jpg" width="70" height="70" alt="rock wall"></a>
+		<a href="../_images/large/slide3.jpg"><img src="../_images/small/slide3_h.jpg" width="70" height="70" alt="old course"></a>
+		<a href="../_images/large/slide4.jpg"><img src="../_images/small/slide4_h.jpg" width="70" height="70" alt="tees"></a>
+		<a href="../_images/large/slide5.jpg"><img src="../_images/small/slide5_h.jpg" width="70" height="70" alt="tree"></a>
+		<a href="../_images/large/slide6.jpg"><img src="../_images/small/slide6_h.jpg" width="70" height="70" alt="ocean course"></a></div>
+	</div>
+</div>
+<footer>
+    <p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+</footer>
+</div>
+</body>
+</html>
