@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>A simple ligthbox</title>
 <link href="../_css/site.css" rel="stylesheet">
-<link href="gallery.css" rel="stylesheet">
+<link href="lightbox.css" rel="stylesheet">
 <script src="../_js/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -12,7 +12,8 @@ $(document).ready(function() {
 		var imgPath, newImage;
 		//get path to new image
 	  	imgPath = $(this).attr('href');
-	   	//create HTML for new image
+	   	//create HTML for new image, set opacity
+	   	// also callback for when image loads
 		$img = $('<img src="' + imgPath +'">').css('opacity',0).load(displayImage);
 		
 		
