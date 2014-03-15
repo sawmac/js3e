@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Reponsive Navigation Menu</title>
+<link href="../_css/site.css" rel="stylesheet">
+<link rel="stylesheet" href="smartmenus/sm-core-css.css">
+<link rel="stylesheet" href="smartmenus/sm-clean.css">
+
+<script src="../_js/jquery.min.js"></script>
+<script src="smartmenus/jquery.smartmenus.min.js"></script>
+<script>
+$(document).ready(function() {
+
+$('#navigation').smartmenus();
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+  <header>
+    JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+  </header>
+  <div class="content">
+    <div class="main">
+      <h1>Navigation Menu</h1>
+      <ul id="navigation" class="sm sm-clean">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us </a>
+          <ul>
+            <li><a href="#">Our History</a></li>
+            <li><a href="#">Driving Directions</a></li>
+            <li><a href="#">Hours</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Our Products </a>
+          <ul>
+            <li><a href="#">Gizmos </a>
+              <ul>
+                <li><a href="#">Gizmo Basic</a></li>
+                <li><a href="#">Gizmo Standard</a></li>
+                <li><a href="#">Gizmo Supreme</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Gadgets </a>
+              <ul>
+                <li><a href="#">Gadget Basic</a></li>
+                <li><a href="#">Gadget Standard</a></li>
+                <li><a href="#">Gadget Supreme</a>
+                  <ul>
+                    <li><a href="#">Gadget Supreme A</a></li>
+                    <li><a href="#">Gadget Supreme B</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#">Time Machines</a></li>
+          </ul>
+        </li>
+      </ul>
+      <p style="clear:both;padding-top: 20px;" >Example of a responsive navigation menu using jQuery and Vasil Dinkov's <a href="http://www.smartmenus.org">SmartMenus Plugin</a>.</p>
+    </div>
+  </div>
+<footer>
+    <p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+</footer>
+</div>
+</body>
+</html>
