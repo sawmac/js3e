@@ -32,8 +32,8 @@ $(document).ready(function() {
 $('#gallery img').each(function(i) {
 	var imgFile = $(this).attr('src');
 	var preloadImage = new Image();
-  var imgExt = /(\.\w{3,4}$)/;
-  preloadImage.src = imgFile.replace(imgExt,'_h$1');
+	var imgExt = /(\.\w{3,4}$)/;
+	preloadImage.src = imgFile.replace(imgExt,'_h$1');
 		
 	$(this).hover(
 		function() {
@@ -53,11 +53,9 @@ $('#gallery img').each(function(i) {
 </head>
 <body>
 <div class="wrapper">
-	<div class="header">
-		<p class="logo">JavaScript <i>&</i> jQuery <i class="mm">The<br>
-			Missing<br>
-			Manual</i></p>
-	</div>
+	<header>
+    JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+	</header>
 	<div class="content">
 		<div class="main">
 			<h1>Slideshow</h1>
@@ -65,9 +63,9 @@ $('#gallery img').each(function(i) {
 			<div id="photo"></div>
 		</div>
 	</div>
-	<div class="footer">
-		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
-	</div>
+	<footer>
+    <p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+	</footer>
 </div>
 </body>
 </html>
