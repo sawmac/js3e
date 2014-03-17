@@ -3,16 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Reponsive Navigation Menu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="../_css/site.css" rel="stylesheet">
 <link rel="stylesheet" href="smartmenus/sm-core-css.css">
-<link rel="stylesheet" href="smartmenus/sm-clean.css">
-
+<link rel="stylesheet" href="smartmenus/sm-simple.css">
 <script src="../_js/jquery.min.js"></script>
 <script src="smartmenus/jquery.smartmenus.min.js"></script>
 <script>
 $(document).ready(function() {
-
-$('#navigation').smartmenus();
+  $('.sm').smartmenus({
+    showFunction: function($ul, complete) {
+      $ul.slideDown(250, complete);
+    },
+    hideFunction: function($ul, complete) {
+     $ul.slideUp(250, complete); 
+    }
+  });
 }); // end ready
 </script>
 </head>
@@ -24,7 +30,7 @@ $('#navigation').smartmenus();
   <div class="content">
     <div class="main">
       <h1>Navigation Menu</h1>
-      <ul id="navigation" class="sm sm-clean">
+      <ul class="sm sm-simple">
         <li><a href="#">Home</a></li>
         <li><a href="#">About Us </a>
           <ul>

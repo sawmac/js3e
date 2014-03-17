@@ -406,6 +406,12 @@ background-color:#FFC;
 	border:1px solid white;
 	z-index: 100;
 }
+
+.sm .highlighted {
+	opacity: 1;
+	border: none !important;
+}
+
 .badge {
 	position: absolute;
 	margin-top: -10px;
