@@ -13,13 +13,13 @@ $(document).ready(function() {
 
   //disable credit card info
 $('#paypal').click(function() {
-	$('#creditCard input').attr('disabled', true).css('backgroundColor','#CCC');
+	$('#creditCard input').prop('disabled', true).css('backgroundColor','#CCC');
 	$('#creditCard label').css('color','#BBB');
 }); // end click()
 
   //enable credit card info
 $('#visa, #mastercard').click(function() {
-	$('#creditCard input').attr('disabled', false).css('backgroundColor','');
+	$('#creditCard input').prop('disabled', false).css('backgroundColor','');
 	$('#creditCard label').css('color','');
 	$('#cardNumber').focus();
 }); // end click()
@@ -27,7 +27,7 @@ $('#visa, #mastercard').click(function() {
 //hide shipping info
 $('#hideShip').click(function() {
 	//check to make sure field is checked
-	if ($(this).attr('checked')) {
+	if ($(this).prop('checked')) {
 		 $('#shipping').slideUp('fast');
 	} else {
 		 $('#shipping').slideDown('fast');
@@ -38,11 +38,9 @@ $('#hideShip').click(function() {
 </head>
 <body>
 <div class="wrapper">
-	<div class="header">
-		<p class="logo">JavaScript <i>&</i> jQuery <i class="mm">The<br>
-			Missing<br>
-			Manual</i></p>
-	</div>
+	<header>
+    JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+  </header>
 	<div class="content">
 		<div class="main">
 			<h1>Fun With Forms</h1>
@@ -576,9 +574,8 @@ $('#hideShip').click(function() {
 			</form>
 		</div>
 	</div>
-	<div class="footer">
-		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
-	</div>
-</div>
+	<footer>
+    <p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+  </footer></div>
 </body>
 </html>

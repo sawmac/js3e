@@ -13,11 +13,9 @@ $(document).ready(function() {
 </head>
 <body>
 <div class="wrapper">
-	<div class="header">
-		<p class="logo">JavaScript <i>&</i> jQuery <i class="mm">The<br>
-			Missing<br>
-			Manual</i></p>
-	</div>
+	<header>
+    JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+	</header>
 	<div class="content">
 		<div class="main">
 			<h1>Fun With Forms</h1>
@@ -37,8 +35,8 @@ $(document).ready(function() {
 						<input name="city" type="text" id="city" size="36">
 					</div>
 					<div>
-						<label for="city" class="label">State/Province</label>
-						<input name="city" type="text" id="city" size="36">
+						<label for="state" class="label">State/Province</label>
+						<input name="state" type="text" id="state" size="36">
 					</div>
 					<div>
 						<label for="zip" class="label">Postal Code</label>
@@ -46,7 +44,7 @@ $(document).ready(function() {
 					</div>
 					<div>
 						<label for="country" class="label">Country</label>
-						<select name="country">
+						<select name="country" id="country">
 							<option>Choose your country </option>
 							<option value="/us/">U.S.A. </option>
 							<option value="/us_espanol/">U.S.A. - Espa&ntilde;ol </option>
@@ -320,7 +318,7 @@ $(document).ready(function() {
 						</div>
 						<div>
 							<label for="shipCountry" class="label">Country</label>
-							<select name="shipCountry">
+							<select name="shipCountry" id="shipCountry">
 								<option>Choose your country </option>
 								<option value="/us/">U.S.A. </option>
 								<option value="/us_espanol/">U.S.A. - Espa&ntilde;ol </option>
@@ -551,9 +549,9 @@ $(document).ready(function() {
 			</form>
 		</div>
 	</div>
-	<div class="footer">
-		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
-	</div>
+	<footer>
+    <p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+  </footer>
 </div>
 </body>
 </html>
