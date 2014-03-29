@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Tabbed Panels</title>
+<title>Accordions</title>
 <link href="../_css/ui-lightness/jquery-ui.min.css" rel="stylesheet">
 <link href="../_css/site.css" rel="stylesheet">
 <script src="../_js/jquery.min.js"></script>
@@ -20,21 +20,16 @@ $(document).ready(function() {
 	</header>
 	<div class="content">
 		<div class="main">
-			<h1>Tabbed Panels</h1>
-			 <div>
-				<ul>
-				  <li><a href="">Tab 1</a></li>
-				  <li><a href="">Tab 2</a></li>
-				  <li><a href="">Tab 3</a></li>
-				  </ul>
-				<!-- panel 1 -->
+			<h1>jQuery UI Accordion</h1>
+			 <div id="accordion">
+			  <h2>What the Robot Says</h2>
 				<div>
-				  <h2><img src="images/robot.jpg" style="float:right" height="150" alt="robot">Content for panel 1</h2>
+				  <h3><img src="images/robot.jpg" style="float:right" height="150" alt="robot">Content for accodion 1</h3>
 				  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</div>
-				<!-- panel 2 -->
+				<h2>Of lists and more...</h2>
 				<div>
-				  <h2>Content for panel 2</h2>
+				  <h3>Content for accordion 2</h3>
 				  <p>You can put any kind of HTML in a panel</p>
 				  <ul>
 						<li>Like lists...</li>
@@ -43,9 +38,9 @@ $(document).ready(function() {
 						<li>And More...</li>
 				  </ul>
 				</div>
-				<!-- panel 3 -->
+				<h2>One more accordion, because you can never have enough polka music.</h2>
 				<div>
-				  <h2>Content for panel 3</h2>
+				  <h3>Content for accordion 3</h3>
 				  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</div>
 			</div>

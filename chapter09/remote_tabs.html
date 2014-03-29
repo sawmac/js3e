@@ -2,16 +2,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Hello World</title>
+<title>Tabbed Panels</title>
 <link href="../_css/ui-lightness/jquery-ui.min.css" rel="stylesheet">
 <link href="../_css/site.css" rel="stylesheet">
 <script src="../_js/jquery.min.js"></script>
 <script src="../_js/jquery-ui.min.js"></script>
 <script>
 $(document).ready(function() {
-  
+  $('#tabContainer').tabs({
+  		load: function(evt,ui) {
+  			var newHTML = ui.panel.find('#main').html();
+  			ui.panel.html(newHTML);
+  		}
+  });
 }); // end ready
-</script>>
+</script>
 </head>
 <body>
 <div class="wrapper">
@@ -20,12 +25,15 @@ $(document).ready(function() {
 	</header>
 	<div class="content">
 		<div class="main">
-			<h1>Hello World</h1>
-			<p>Notice that the dialog box looks so much better than an Alert!</p>
-			<div id="hello" title="Hello World!">
-				<p>This dialog box is actually a div, that's placed on the page using absolute positioning.</p>
-				<p>Try dragging the dialog around the screen. You can!</p>
+			<h1>Tabbed Panels</h1>
+			 <div id="tabContainer">
+				<ul>
+				  <li><a href="panel1.html">Tab 1</a></li>
+				  <li><a href="panel2.html">Tab 2</a></li>
+				  <li><a href="panel3.html">Tab 3</a></li>
+				  </ul>
 			</div>
+  </div>
 		</div>
 	</div>
 	<footer>
