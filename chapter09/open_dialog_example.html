@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Dialog example</title>
+<link href="../_css/ui-lightness/jquery-ui.min.css" rel="stylesheet">
+<link href="../_css/site.css" rel="stylesheet">
+<script src="../_js/jquery.min.js"></script>
+<script src="../_js/jquery-ui.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('#map').dialog({
+  	autoOpen: false,
+  	width: 305
+  });
+  $('#mapLink').click(function(evt) {
+  	evt.preventDefault(); // don't follow link
+  	$('#map').dialog('open');
+  }); // end click
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<header>
+		JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+	</header>
+	<div class="content">
+		<div class="main">
+			<h1>Opening a dialog with a click</h1>
+			<p>Want to visit us? <a href="map.html" id="mapLink">Click here for a map.</a></p>
+			<div id="map" title="Come visit us!">
+				<img src="images/map.png">
+			</div>
+
+		</div>
+	</div>
+	<footer>
+		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+	</footer>
+</div>
+</body>
+</html>
