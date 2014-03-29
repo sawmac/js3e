@@ -378,11 +378,11 @@ form .wide {
 }
 .resultSection {
 	float: right;
-	width: 45%;
+	width: 40%;
 	margin-left: 20px;
 }
 #regexTester {
-	margin-right: 55%;
+	margin-right: 45%;
 }
 .sideBySide li {
 	float: left;
@@ -540,4 +540,25 @@ form .indent, #submit {
 }
 #events legend {
 	font: 150% 'League Gothic';
+}
+
+.row p {
+  float: left;
+  width: 25%;
+  margin-right: 5%;
+  font-weight: bold;
+  color: red;
+}
+.row p img {
+  max-width: 100%;
+  border: 1px solid black;
+}
+.row button {
+  font-weight: bold;
+  color: red;
+  font-size: 1em;
+}
+
+#accordion h2 {
+  font-weight: normal;
 }
