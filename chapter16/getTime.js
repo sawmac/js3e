@@ -1,4 +1,4 @@
-function printTime(secs) {
+function getTime(secs) {
 	var sep = ':'; //seperator character
 	var hours,minutes,seconds,time;
 	var now = new Date();
