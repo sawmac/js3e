@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Debugging Programs</title>
 <link href="../_css/site.css" rel="stylesheet">
-<script src="_js/jquery-1.6.3.min.js"></script>
+<script src="_js/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
 var score = 0;
@@ -43,7 +43,7 @@ function askQuestion() {
 function buildAnswers(answers) {
   var answerHTML='';
   // loop through each item in array answers
-  for (i=0;i<=answers.length;i++) {
+  for (var i=0;i<=answers.length;i++) {
     //build radio button
     answerHTML+=' <input name="quiz" type="radio" value="';
     answerHTML+=answers[i] + '">' + answers[i];
@@ -78,12 +78,12 @@ $('#next').click(function() {
 </head>
 <body>
 <div class="wrapper">
-	<div class="header">
-		<p class="logo">JavaScript <i>&</i> jQuery <i class="mm">The<br>Missing<br>Manual</i></p>
-	</div>
+	<header>
+    JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+</header>
 	<div class="content">
 		<div class="main">
-			<h1>Using Firebug&#8217;s Debugger</h1>
+			<h1>Using a Debugger</h1>
 			<div id="questionArea">
   <p id="question"></p>
   <p id="answers"></p>
@@ -92,9 +92,9 @@ $('#next').click(function() {
   </div>
 		</div>
 	</div>
-	<div class="footer">
-		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
-	</div>
+	<footer>
+    <p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+</footer>
 </div>
 </body>
 </html>

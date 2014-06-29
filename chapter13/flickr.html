@@ -2,20 +2,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Using the Console</title>
+<title>Flickr Feed</title>
 <link href="../_css/site.css" rel="stylesheet">
+<style>
+.image {
+	float: left;
+	padding: 10px;
+	border: solid 1px rgb(27,45,94);
+	background-color: white;
+	margin: 0 30px 30px 0;
+}
+.image:hover {
+	border-color: red;
+	background-color: rgb(204,204,204);	
+}
+</style>
 <script src="../_js/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
-  console.log('READY');	
-  $('#comments').keyup(function() {
-  	console.log('Event: keyup');
-  	 var text = $(this).val();
-   	console.log('Contents of comments: %s',text);
-	var chars = text.length;
-    console.log('Number of characters: %d',chars);
-	$('#count').text(chars + " characters");
-  }); // end keyup
+			
 }); // end ready
 </script>
 </head>
@@ -26,15 +31,9 @@ $(document).ready(function() {
 </header>
 	<div class="content">
 		<div class="main">
-			<h1>Using Firebug&#8217;s console.log() Function</h1>
-			
- 
-			
-		<form name="console" method="post" action="" id="console">
-    <p>
-    <label for="comments">Comments</label>
-    <textarea name="comments" id="comments" cols="35" rows="5"></textarea> <span id="count"></span></p>
-    </form>
+			<h1>Flickr Images</h1>
+		<div id="photos"></div>
+        <br class="clearLeft">
 		</div>
 	</div>
 	<footer>

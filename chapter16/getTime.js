@@ -1,6 +1,6 @@
 function getTime(secs) {
 	var sep = ':'; //seperator character
-	var hours,minutes,seconds,time;
+	var hours,minutes,seconds,time,meridiem;
 	var now = new Date();
 	hours = now.getHours();
 	if (hours < 12) {
@@ -9,10 +9,10 @@ function getTime(secs) {
 		meridiem = 'pm';
 	}
 	hours = hours % 12;
-	if (hours==0) {
+	if (hours===0) {
 		hours = 12;
 	} 
-	time = hours
+	time = hours;
 	minutes = now.getMinutes();
 	if (minutes<10) {
 		minutes = '0' + minutes;
@@ -23,7 +23,7 @@ function getTime(secs) {
 		if (seconds<10) {
 			seconds = '0' + seconds;
 		}
-		time += sep + seconds
+		time += sep + seconds;
 	} 
 	return time + ' ' + meridiem;
 }

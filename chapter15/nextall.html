@@ -8,7 +8,7 @@
 .button {
 	width: 40px;
 	height: 40px;
-	background-color: white;
+	background-color: grey;
 	float: left;	
 	margin-right: 20px;
 }
@@ -22,7 +22,7 @@ $(document).ready(function() {
 		  'backgroundColor':'red',
 		  'opacity' : 1
 	  });
-	  $this.siblings('.button').css('backgroundColor','white');
+	  $this.siblings('.button').css('backgroundColor','grey');
 	  $this.prevAll('.button').fadeTo(250,.5);
 	  $this.nextAll('.button').fadeTo(250,1);
   }); // end mouseOver
@@ -31,9 +31,9 @@ $(document).ready(function() {
 </head>
 <body>
 <div class="wrapper">
-	<div class="header">
-		<p class="logo">JavaScript <i>&</i> jQuery <i class="mm">The<br>Missing<br>Manual</i></p>
-	</div>
+	<header>
+    JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+  </header>
 	<div class="content">
 	  <div class="main">
 	    <h1>Using .prevAll and .nextAll()</h1>
@@ -52,9 +52,9 @@ $(document).ready(function() {
            
 	  </div>
   </div>
-	<div class="footer">
-		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
-	</div>
+	<footer>
+    <p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+  </footer>
 </div>
 </body>
 </html>

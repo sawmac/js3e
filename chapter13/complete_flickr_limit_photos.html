@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Flickr Feed</title>
+<link href="../_css/site.css" rel="stylesheet">
+<style>
+.image {
+	float: left;
+	padding: 10px;
+	border: solid 1px rgb(27,45,94);
+	background-color: white;
+	margin: 0 30px 30px 0;
+}
+.image:hover {
+	border-color: red;
+	background-color: rgb(204,204,204);	
+}
+</style>
+<script src="../_js/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+
+var URL = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+var searchInfo = {
+	// change this ID to another flickr ID (like your own if you have one)
+	id : "25053835@N03",
+	format : "json"
+};
+
+// change this to specify how many photos you wish to display (max is 20)
+var maxPhotos = 10;
+
+$.getJSON(URL,searchInfo,function(data) {
+	$('h1').text(data.title);
+	$.each(data.items,function(i,photo) {
+		if (i<maxPhotos) {
+			var photoHTML = '<span class="image">';
+			photoHTML += '<a href="' + photo.link + '">';
+			photoHTML += '<img src="' + photo.media.m.replace('_m','_s') + '"></a>';
+			$('#photos').append(photoHTML);	
+		}
+	}); // end each
+}); // end get JSON
+			
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<header>
+    JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+</header>
+	<div class="content">
+		<div class="main">
+			<h1>Flickr Images</h1>
+		<div id="photos"></div>
+         <br class="clearLeft">
+		</div>
+	</div>
+	<footer>
+    <p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+</footer>
+</div>
+</body>
+</html>
