@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQueryUI Button Widget</title>
+<link href="../_css/jquery-ui/jquery-ui.structure.min.css" rel="stylesheet">
+<link href="../_css/jquery-ui/jquery-ui.theme.min.css" rel="stylesheet">
+<link href="../_css/site.css" rel="stylesheet">
+<link href="form.css" rel="stylesheet">
+<script src="../_js/jquery.min.js"></script>
+<script src="../_js/jquery-ui.min.js"></script>
+<script src="airports.js"></script>
+<script>
+$(document).ready(function() {
+   $('#radio').buttonset();
+   $('#check').buttonset();
+   $('#button').button({
+   	icons : {
+   		secondary : 'ui-icon-circle-arrow-e'
+   	}
+   });
+   $('#submit').button();
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<header>
+		JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+	</header>
+	<div class="content">
+		<div class="main">
+			<h1>jQueryUI Button Widget</h1>
+			<form>
+			  <div id="radio">
+			    <p class="label">Number of bags to check</p>
+			    <input type="radio" id="none" name="bags" checked="checked">
+      		<label for="none">0</label>
+ 
+      		<input type="radio" id="one" name="bags">
+      		<label for="one">1</label>
+ 
+      		<input type="radio" id="two" name="bags">
+      		<label for="two">2</label>
+			  </div>
+        <div id="check">
+          <p class="label">Checkboxes</p>
+          <input type="checkbox" id="aisle" name="aisle">
+          <label for="aisle">Aisle</label>
+ 
+          <input type="checkbox" id="window" name="window">
+          <label for="window">Window</label>
+ 
+          <input type="checkbox" id="exit" name="exit">
+          <label for="exit">Exit Row</label>
+
+          <input type="checkbox" id="any" name="any">
+          <label for="any">Any seat</label>
+        </div>
+			  <div>
+          <p class="label">A Button Element</p>
+				  <button id="button">&lt;button&gt;</button>
+			  </div>
+        <div>
+          <p class="label">A Submit Button</p>
+          <input type="submit" value="Submit this form!" id="submit">
+        </div>
+			</form>
+		</div>
+	</div>
+	<footer>
+		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+	</footer>
+</div>
+</body>
+</html>

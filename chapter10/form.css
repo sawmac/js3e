@@ -1,0 +1,29 @@
+form div {
+  margin-bottom: 10px;
+  clear: both;
+}
+
+.label {
+  float: left;
+  display: inline-block;
+  position: relative;
+  top: 10px;
+  text-align: right;
+  width: 200px;
+  padding-right: 10px;
+}
+
+input {
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  height: 40px;
+  padding: 5px;
+}
+
+#next {
+  margin-left: 200px;
+}
+
+#submit {
+  margin: 0;
+}

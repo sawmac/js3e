@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Select Menu</title>
+<link href="../_css/jquery-ui/jquery-ui.structure.min.css" rel="stylesheet">
+<link href="../_css/jquery-ui/jquery-ui.theme.min.css" rel="stylesheet">
+<link href="../_css/site.css" rel="stylesheet">
+<link href="form.css" rel="stylesheet">
+<script src="../_js/jquery.min.js"></script>
+<script src="../_js/jquery-ui.min.js"></script>
+<script>
+$(document).ready(function() {
+  var colors = ['Barn Red', 'Beetroot', 'Brick', 'Bright Maroon', 'Burgundy'];
+	$('#redInput').autocomplete( { source : colors } );
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<header>
+		JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+	</header>
+	<div class="content">
+		<div class="main">
+			<h1>Autocomplete</h1>
+			<form>
+			  	<label for="redInput" class="label">Type a shade of red</label>
+			  	<input type="text" id="redInput">
+			</form>
+		</div>
+	</div>
+	<footer>
+		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+	</footer>
+</div>
+</body>
+</html>
