@@ -3,13 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Hello World</title>
-<link href="../_css/ui-lightness/jquery-ui.min.css" rel="stylesheet">
+<link href="../_css/jquery-ui.min.css" rel="stylesheet">
 <link href="../_css/site.css" rel="stylesheet">
+<link href="interactions.css" rel="stylesheet">
 <script src="../_js/jquery.min.js"></script>
 <script src="../_js/jquery-ui.min.js"></script>
 <script>
 $(document).ready(function() {
-
+  $('.draggable').draggable({
+    snap : '.droppable',
+    snapMode : 'inner',
+    snapTolerance : 10
+  });
+  $('.droppable').droppable({
+     hoverClass: "ui-state-highlight",
+  	 accept : '.draggable'
+  });
 }); // end ready
 </script>
 </head>
@@ -19,15 +28,10 @@ $(document).ready(function() {
 		JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
 	</header>
 	<div class="content">
-		<div id="main">
-		  <h2>Content for panel 2</h2>
-  		<p>You can put any kind of HTML in a panel</p>
-  <ul>
-    <li>Like lists...</li>
-    <li>Headlines...</li>
-    <li>Images...</li>
-    <li>And More...</li>
-  </ul>
+		<div class="main">
+			<h1>Drag and Drop</h1>
+			<div class="draggable"><p>You can drag me</p></div>
+			<div class="droppable"><p>You can drop things on me</p></div>
 		</div>
 	</div>
 	<footer>

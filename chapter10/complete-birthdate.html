@@ -2,14 +2,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Hello World</title>
-<link href="../_css/ui-lightness/jquery-ui.min.css" rel="stylesheet">
+<title>A Birthday Calendar Picker</title>
+<link href="../_css/jquery-ui.min.css" rel="stylesheet">
 <link href="../_css/site.css" rel="stylesheet">
+<link href="form.css" rel="stylesheet">
 <script src="../_js/jquery.min.js"></script>
 <script src="../_js/jquery-ui.min.js"></script>
+<script src="airports.js"></script>
 <script>
 $(document).ready(function() {
-
+   $('#dob').datepicker({
+   	 changeMonth : true ,
+   	 changeYear : true,
+   	 yearRange : '-120:+0',
+   	 maxDate : 0,
+   	 dateFormat : 'm-dd-yy'
+   	});
 }); // end ready
 </script>
 </head>
@@ -19,15 +27,14 @@ $(document).ready(function() {
 		JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
 	</header>
 	<div class="content">
-		<div id="main">
-		  <h2>Content for panel 2</h2>
-  		<p>You can put any kind of HTML in a panel</p>
-  <ul>
-    <li>Like lists...</li>
-    <li>Headlines...</li>
-    <li>Images...</li>
-    <li>And More...</li>
-  </ul>
+		<div class="main">
+			<h1>A Birthday Picker</h1>
+			<form>
+			  <div>
+			    <label for="dob" class="label">What's your birth date?</label>
+			    <input type="text" id="dob" name="birthdate">
+			  </div>
+			</form>
 		</div>
 	</div>
 	<footer>

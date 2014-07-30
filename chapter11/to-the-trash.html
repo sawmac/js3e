@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Trash It!</title>
+<link href="../_css/jquery-ui.min.css" rel="stylesheet">
+<link href="../_css/site.css" rel="stylesheet">
+<link href="interactions.css" rel="stylesheet">
+<script src="../_js/jquery.min.js"></script>
+<script src="../_js/jquery-ui.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('#photos img').draggable({
+  	  start : function (event, ui) {
+    ui.helper.css('transform', 'scale(2)');
+  }
+,
+stop : function (event, ui) {
+    ui.helper.css('transform', 'scale(1)');
+  },
+
+  		drag : function (event, ui) {
+  			  $('#left').text(ui.position.left);
+  $('#top').text(ui.position.top);
+
+  		}
+  });
+  $('#trashcan').droppable({
+  	tolerance : 'fit',
+  	drop : function (event, ui) {
+  		ui.helper.hide('explode');
+  		console.log("Dropped Left %s Top %s", ui.offset.left, ui.offset.top);
+  		$(this).attr('src','../_images/trashcan-full-icon.png');
+  	}
+  });
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<header>
+		JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+	</header>
+	<div class="content">
+		<div class="main">
+			<h1>Trash It!</h1>
+		</div>
+		<div id="photos">
+		  <img src="../_images/small/slide1_h.jpg">
+		  <img src="../_images/small/slide2_h.jpg">
+		  <img src="../_images/small/slide3_h.jpg">
+		  <img src="../_images/small/slide4_h.jpg">
+		  <img src="../_images/small/slide5_h.jpg">
+		  <img src="../_images/small/slide6_h.jpg">
+		</div>
+		<img src="../_images/trashcan-empty-icon.png" id="trashcan">
+		Left: <span id="left"></span> Top: <span id="top"></span>
+	</div>
+	<footer>
+		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+	</footer>
+</div>
+</body>
+</html>

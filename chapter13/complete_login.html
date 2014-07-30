@@ -33,7 +33,7 @@ $(document).ready(function() {
         if (data==='pass') {
            $('.main').html('<p>You have successfully logged in!</p>');
         } else {
-           if (! $('#fail').length) {
+           if ($('#fail').length === 0) {
              $('#formwrapper').prepend('<p id="fail">Incorrect login information. Please try again</p>');
           }
         }

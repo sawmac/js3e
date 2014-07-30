@@ -2,24 +2,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>A Birthday Calendar Picker</title>
+<title>Hello World</title>
 <link href="../_css/jquery-ui.min.css" rel="stylesheet">
 <link href="../_css/site.css" rel="stylesheet">
-<link href="form.css" rel="stylesheet">
 <script src="../_js/jquery.min.js"></script>
 <script src="../_js/jquery-ui.min.js"></script>
-<script src="airports.js"></script>
 <script>
 $(document).ready(function() {
-   $('#dob').datepicker({
-   	 changeMonth : true ,
-   	 changeYear : true,
-   	 yearRange : '-100:+0',
-   	 maxDate : 0,
-   	 dateFormat : 'm-dd-yy'
-   	});
+	$('#hello').dialog({
+  autoOpen: false
+}
+);
+  $('#clicker').click(function(evt) {
+  	//evt.preventDefault();
+  	$('#hello').dialog('open');
+	}); // end click
+
 }); // end ready
-</script>
+</script>>
 </head>
 <body>
 <div class="wrapper">
@@ -28,13 +28,12 @@ $(document).ready(function() {
 	</header>
 	<div class="content">
 		<div class="main">
-			<h1>A Birthday Picker</h1>
-			<form>
-			  <div>
-			    <label for="dob" class="label">What's your birth date?</label>
-			    <input type="text" id="dob" name="birthdate">
-			  </div>
-			</form>
+			<h1>Hello World</h1>
+			<p>Notice that the dialog box looks so much better than an Alert!<a href="panel1.htlm" id="clicker">open login</a></p>
+			<div id="hello" title="Hello World!">
+				<p>This dialog box is actually a div, that's placed on the page using absolute positioning.</p>
+				<p>Try dragging the dialog around the screen. You can!</p>
+			</div>
 		</div>
 	</div>
 	<footer>
