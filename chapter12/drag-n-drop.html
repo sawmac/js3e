@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hello World</title>
+<link href="../_css/jquery-ui.min.css" rel="stylesheet">
+<link href="../_css/site.css" rel="stylesheet">
+<link href="interactions.css" rel="stylesheet">
+<script src="../_js/jquery.min.js"></script>
+<script src="../_js/jquery-ui.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('.draggable').draggable({
+    snap : '.droppable',
+    snapMode : 'inner',
+    snapTolerance : 10
+  });
+  $('.droppable').droppable({
+     hoverClass: "ui-state-highlight",
+  	 accept : '.draggable',
+     activate : function (evt, ui) {
+        $(this).append('<p id="dropMessage">Drop photo here</p>');
+      },
+      deactivate : function (event, ui) {
+        $('#dropMessage').remove();
+      },
+      drop : function (event, ui) {
+        $(this).droppable({
+          disabled : true
+        });
+        ui.helper.draggable({
+          disabled : true
+        })
+      }
+  });
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<header>
+		JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+	</header>
+	<div class="content">
+		<div class="main">
+			<h1>Drag and Drop</h1>
+			<div class="draggable"><p>You can drag me</p></div>
+			<div class="droppable"><p>You can drop things on me</p></div>
+		</div>
+	</div>
+	<footer>
+		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+	</footer>
+</div>
+</body>
+</html>

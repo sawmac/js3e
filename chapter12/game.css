@@ -1,0 +1,60 @@
+.main * {
+  box-sizing: border-box;
+}
+
+
+#gameContainer {
+  width: 760px;
+  padding: 5px;
+  border: solid 1px #DDD;
+  background-color: #EEE;
+  text-align: center;
+  float: left;
+}
+
+
+.piece {
+  width: 100px;
+  height: 100px;
+  margin-right: 6px;
+  float: left;
+}
+
+.piece:last-of-type {
+  margin-right: 0;
+}
+
+.red {
+  background-color: red;
+  color: red;
+}
+
+.orange {
+  background-color: orange;
+  color: orange;  
+}
+
+.yellow {
+  background-color: yellow;
+  color: yellow;  
+}
+
+.green {
+  background-color: green;
+  color: green;  
+}
+
+.blue {
+  background-color: blue;
+  color: blue;  
+}
+
+.indigo {
+  background-color: indigo;
+  color: indigo;  
+}
+
+.violet {
+  background-color: violet;
+  color: violet;  
+}

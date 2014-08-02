@@ -2,23 +2,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Hello World</title>
+<title>Sortable Playlist</title>
 <link href="../_css/jquery-ui.min.css" rel="stylesheet">
 <link href="../_css/site.css" rel="stylesheet">
-<link href="interactions.css" rel="stylesheet">
+<link href="interactions.css" rel="stylesheet" >
 <script src="../_js/jquery.min.js"></script>
 <script src="../_js/jquery-ui.min.js"></script>
 <script>
 $(document).ready(function() {
-  $('.draggable').draggable({
-    snap : '.droppable',
-    snapMode : 'inner',
-    snapTolerance : 10
-  });
-  $('.droppable').droppable({
-     hoverClass: "ui-state-highlight",
-  	 accept : '.draggable'
-  });
+  
+   $('.fileList').sortable({
+   	forcePlaceholderSize : true,
+    placeholder : 'ui-state-highlight',
+    connectWith : '.fileList'
+   });
+
+   
 }); // end ready
 </script>
 </head>
@@ -29,9 +28,21 @@ $(document).ready(function() {
 	</header>
 	<div class="content">
 		<div class="main">
-			<h1>Drag and Drop</h1>
-			<div class="draggable"><p>You can drag me</p></div>
-			<div class="droppable"><p>You can drop things on me</p></div>
+			<h1>Files and Folders</h1>
+			<ul id="root">
+				<li class="folder">Folder A 
+				  <ul class="fileList">
+						<li class="file">Resume</li>
+						<li class="file">Thesis</li>
+					</ul>
+				</li>
+				<li class="folder">Folder B
+					<ul class="fileList">
+						<li class="file">Homework</li>
+						<li class="file">Recipes</li>
+					</ul>
+				</li>
+			</ul>
 		</div>
 	</div>
 	<footer>

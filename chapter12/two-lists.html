@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sortable Playlist</title>
+<link href="../_css/jquery-ui.min.css" rel="stylesheet">
+<link href="../_css/site.css" rel="stylesheet">
+<link href="interactions.css" rel="stylesheet" >
+<script src="../_js/jquery.min.js"></script>
+<script src="../_js/jquery-ui.min.js"></script>
+<script>
+$(document).ready(function() {
+  
+   $('#wishList').sortable({
+   		connectWith : '#shoppingCart',
+   		containment : '.main',
+   		receive : function (event, ui) {
+   			ui.sender.effect('highlight');
+   		}
+   });
+
+   $('#shoppingCart').sortable({
+   	connectWith : '#wishList',
+   	containment : '.main',
+   });
+
+   
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<header>
+		JAVASCRIPT <span class="amp">&amp;</span> jQUERY: THE&nbsp;MISSING&nbsp;MANUAL
+	</header>
+	<div class="content">
+		<div class="main">
+			<h1>Wishlist</h1>
+					 <ul class="productList" id="wishList">
+						<li class="product">American Girl Doll</li>
+						<li class="product">Bike</li>
+					</ul>
+					 <h1>Shopping Cart</h1>
+					<ul class="productList" id="shoppingCart">
+						<li class="product">BB Gun</li>
+						<li class="product">High Tops</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<footer>
+		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+	</footer>
+</div>
+</body>
+</html>

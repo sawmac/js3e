@@ -5,11 +5,12 @@
 <title>Hello World</title>
 <link href="../_css/jquery-ui.min.css" rel="stylesheet">
 <link href="../_css/site.css" rel="stylesheet">
+<link href="interactions.css" rel="stylesheet">
 <script src="../_js/jquery.min.js"></script>
 <script src="../_js/jquery-ui.min.js"></script>
 <script>
 $(document).ready(function() {
-
+  $('#note').draggable();
 }); // end ready
 </script>
 </head>
@@ -20,13 +21,16 @@ $(document).ready(function() {
 	</header>
 	<div class="content">
 		<div class="main">
-			<h1>Hello World</h1>
-			<p>Notice that you don't see this page or text, until you close the Alert box. </p>
-		</div>
+			<h1>Draggable Note</h1>
+      <div id="note">
+        <h2>You can drag me</h2>
+        <p>I'm a note on the page.</p>
+      </div>
 	</div>
 	<footer>
 		<p>JavaScript &amp; jQuery: The Missing Manual, 3rd Edition, by <a href="http://sawmac.com/">David McFarland</a>. Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
 	</footer>
 </div>
+    </div>
 </body>
 </html>
