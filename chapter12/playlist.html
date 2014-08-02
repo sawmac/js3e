@@ -10,9 +10,7 @@
 <script src="../_js/jquery-ui.min.js"></script>
 <script>
 $(document).ready(function() {
-   function evtStatus(event, ui) {
-   	console.log(event.type);
-   }
+   
    function addTrash() {
    	 $('#playlist li').filter(function() {
    	 	  return $('.ui-icon-trash', this).length === 0;
@@ -29,19 +27,6 @@ $(document).ready(function() {
    	 opacity: .5,
      distance: 10,
    	 placeholder : 'ui-state-highlight',
-   	 activate : evtStatus,
-   	 beforeStop: evtStatus,
-   	 change: evtStatus,
-   	 create: addTrash,
-   	 deactivate: evtStatus,
-   	 out : evtStatus,
-   	 over : evtStatus,
-   	 receive : evtStatus,
-   	 remove: evtStatus,
-   	 sort: evtStatus,
-   	 start: evtStatus,
-   	 stop: addTrash,
-   	 update: evtStatus
    });
 
   $('#favorites li').draggable({

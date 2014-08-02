@@ -12,23 +12,14 @@
 $(document).ready(function() {
    function evtStatus(event, ui) {
    	console.log(event.type);
-   	switch (event.type) {
-   		case 'sortcreate':
-         case 'sortchange':
-   		case 'sortupdate':
-   		case 'sortdeactivate':
-   		case 'sortout':
-   		case 'sortstop':
-         break;
-         case 'sort' :
-   	}
    }
 
   
 
-   $('#playlist').sortable({
+   $('.songList').sortable({
    	 opacity: .5,
    	 placeholder : 'ui-state-highlight',
+       connectWith : '.songList',
    	 activate : evtStatus,
    	 beforeStop: evtStatus,
    	 change: evtStatus,
@@ -56,11 +47,16 @@ $(document).ready(function() {
 	<div class="content">
 		<div class="main">
 			<h1>My Musical Playlist</h1>
-			<ul id="playlist" class="songList">
+			<ul id="playlist1" class="songList">
 				<li id="song_1">My Way -- Frank Sinatra</li>
 				<li id="song_2">Like a Rolling Stone -- Bob Dylan</li>
 				<li id="song_3">Respect -- Aretha Franklin</li>
 			</ul>
+         <ul id="playlist2" class="songList">
+            <li>Symphonie #5 -- Beethoven</li>
+            <li>Kentucky Waltz -- Bill Monroe</li>
+            <li>I Saw the Light -- Hank Williams</li>
+         </ul>
 		</div>
 	</div>
 	<footer>
