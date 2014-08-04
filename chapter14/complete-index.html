@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My To-Do List</title>
+<link href="css/todo.css" rel="stylesheet">
+<link href="css/jquery-ui.min.css" rel="stylesheet">
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="complete-todo.js"></script>
+<script src="serialize-todo-data.js"></script>
+
+</head>
+<body>
+<div class="container">
+<div id="to-do">
+<h1>My To-do List</h1>
+<button id="add-todo">Add a to-do item</button>
+<h2>To Be Done</h2>
+<ul id="todo-list" class="sortlist">
+  
+</ul>
+</div>
+<div id="completed">
+<h2>Completed Tasks</h2>
+<ul id="completed-list" class="sortlist">
+   
+</ul>
+</div>
+<div id="new-todo" title="Add to-do item">
+  <p>
+  	<label for="task">Task Name:</label>
+  	<input type="text" name="task" id="task">
+  </p>
+</div>
+</div>
+</body>
+</html>

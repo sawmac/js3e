@@ -1,0 +1,146 @@
+/* transition mixins */
+/* animation mixins */
+/* reset browser styles */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1.2; 
+  background-color: rgba(240,245,250, .8);}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+ol {
+  padding-left: 1.4em;
+  list-style: decimal; }
+
+ul {
+  padding-left: 1.4em;
+  list-style: square; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+/* end reset browser styles */
+@font-face {
+  font-family: 'ModernPictograms';
+  src: url("../fonts/modernpics-webfont.eot");
+  src: url("../fonts/modernpics-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/modernpics-webfont.woff") format("woff"), url("../fonts/modernpics-webfont.ttf") format("truetype"), url("../_fonts/modernpics-webfont.svg#ModernPictogramsNormal") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+body {
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  font-size: .75em; }
+
+
+.container {
+  position: relative;
+  margin: 50px 50px 0 200px; }
+
+h1 {
+  font-weight: normal;
+  font-size: 2em;
+  margin-bottom: .9em;
+  color: black; }
+
+h2 {
+  font-weight: normal;
+  font-size: 1.5em;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  margin-top: 2em;
+  padding-top: .2em; }
+
+#add-todo {
+  position: absolute;
+  left: -175px;
+  top: 60px;
+}
+
+/* form styles */
+form p {
+  line-height: 3em; }
+
+label {
+  width: 30%;
+  float: left;
+  display: inline-block; }
+
+/* list styles */
+#todo-list, #completed-list {
+  margin: 0.5em 0 0 0;
+  padding: 0.2em 0 0 0;
+  list-style-type: none;
+  font-size: 1.5em; 
+ }
+  #todo-list li, #completed-list li {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    padding-top: .1em;
+    line-height: 170%;
+    margin-top: .2em; 
+    background-color: white;
+  }
+  #todo-list .due-date, #completed-list .due-date {
+    display: inline-block; }
+  #todo-list .task, #completed-list .task {
+    width: 60%;
+    display: inline-block; }
+
+#todo-list .ui-state-highlight, #completed-list .ui-state-highlight {
+  min-height: 30px;
+}
+
+.delete, .done {
+  font-family: ModernPictograms;
+  font-size: .9em;
+  display: inline-block;
+  margin: 0.25em 0.2em;
+  cursor: pointer;
+  border-radius: .2em;
+  line-height: 130%;
+  width: 1.2em;
+  height: 1.2em;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.2); }
+
+.done {
+  float: left;
+  margin-right: 1em;
+  color: white; }
+
+.delete {
+  float: right; }
+
+.delete:hover {
+  background-color: red;
+  color: white; }
+
+#todo-list .done:hover {
+  background-color: green;
+  color: white; }
+
+#completed-list .done {
+  color: green;
+  border: none;
+  cursor: default; }
+
+  .ui-effects-transfer {
+    border: 1px dotted black;
+  }
