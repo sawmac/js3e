@@ -20,7 +20,7 @@ div.draggable {
   position: absolute;
   top: 50px;
   left: 50px;
-  width: 200px;
+  width: 250px;
   height: 300px;
   background-color: rgba(214,223,226,.5);
   border: 1px solid #333;
